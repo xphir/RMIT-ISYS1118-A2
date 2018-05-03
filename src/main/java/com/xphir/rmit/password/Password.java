@@ -1,3 +1,4 @@
+package com.xphir.rmit.password;
 /**
  * Author: Ian Gallagher <igallagher@securityinnovation.com>
  *

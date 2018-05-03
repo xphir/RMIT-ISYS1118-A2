@@ -1,3 +1,5 @@
+package com.xphir.rmit.password;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;

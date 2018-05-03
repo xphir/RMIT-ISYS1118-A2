@@ -1,3 +1,5 @@
+package com.xphir.rmit.jsonsimple;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
