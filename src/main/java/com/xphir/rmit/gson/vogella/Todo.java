@@ -1,4 +1,4 @@
-package com.xphir.rmit.vogellaGSON;
+package com.xphir.rmit.gson.vogella;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

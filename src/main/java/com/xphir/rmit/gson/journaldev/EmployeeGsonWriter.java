@@ -1,11 +1,10 @@
-package com.xphir.rmit.journaldev;
+package com.xphir.rmit.gson.journaldev;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Set;
 
 import com.google.gson.stream.JsonWriter;
-import com.xphir.rmit.journaldev.Employee;
 
 public class EmployeeGsonWriter {
 

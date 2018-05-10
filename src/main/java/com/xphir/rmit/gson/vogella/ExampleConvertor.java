@@ -1,4 +1,4 @@
-package com.xphir.rmit.vogellaGSON;
+package com.xphir.rmit.gson.vogella;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -48,13 +48,13 @@ public class ExampleConvertor {
         Type type = new TypeToken<List<Todo>>() {}.getType();
         String json = gson.toJson(list, type);
         try {
-            Files.write(Paths.get("db.txt"), json.getBytes(), StandardOpenOption.CREATE);
+            Files.write(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.txt"), json.getBytes(), StandardOpenOption.CREATE);
         } catch (IOException e) {
             e.printStackTrace();
         }
         String content ="";
         try {
-            content = new String(Files.readAllBytes(Paths.get("db.txt")));
+            content = new String(Files.readAllBytes(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }

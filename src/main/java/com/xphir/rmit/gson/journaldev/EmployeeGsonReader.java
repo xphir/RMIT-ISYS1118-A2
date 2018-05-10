@@ -1,4 +1,4 @@
-package com.xphir.rmit.journaldev;
+package com.xphir.rmit.gson.journaldev;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,8 +10,6 @@ import java.util.List;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
-import com.xphir.rmit.journaldev.Address;
-import com.xphir.rmit.journaldev.Employee;
 
 public class EmployeeGsonReader {
 

@@ -1,4 +1,4 @@
-package com.xphir.rmit.journaldev;
+package com.xphir.rmit.gson.journaldev;
 
 public class Address {
 

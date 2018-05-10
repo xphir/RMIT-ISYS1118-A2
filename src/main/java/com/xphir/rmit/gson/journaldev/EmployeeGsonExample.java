@@ -1,4 +1,4 @@
-package com.xphir.rmit.journaldev;
+package com.xphir.rmit.gson.journaldev;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,8 +10,6 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.xphir.rmit.journaldev.Address;
-import com.xphir.rmit.journaldev.Employee;
 
 public class EmployeeGsonExample {
 
@@ -23,7 +21,7 @@ public class EmployeeGsonExample {
 
         // read JSON file data as String
         String fileData = new String(Files.readAllBytes(Paths
-                .get("C:\\Users\\Elliot\\IdeaProjects\\HRSystem\\src\\main\\java\\com\\xphir\\rmit\\journaldev\\employee2.json")));
+                .get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\src\\main\\java\\com\\xphir\\rmit\\gson\\journaldev\\employee2.json")));
 
         // parse json string to object
         Employee emp1 = gson.fromJson(fileData, Employee.class);

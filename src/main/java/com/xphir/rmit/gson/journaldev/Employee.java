@@ -1,4 +1,4 @@
-package com.xphir.rmit.journaldev;
+package com.xphir.rmit.gson.journaldev;
 
 import java.util.Arrays;
 import java.util.List;

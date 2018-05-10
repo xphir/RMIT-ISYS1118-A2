@@ -1,4 +1,4 @@
-package com.xphir.rmit.vogellaGSON;
+package com.xphir.rmit.gson.vogella;
 
 public class Task {
     private final long id;
