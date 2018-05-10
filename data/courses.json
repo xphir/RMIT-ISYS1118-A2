@@ -1,0 +1,288 @@
+{
+  "Schools": [
+    {
+      "SCIENCE": [
+        {
+          "Applied science": []
+        },
+        {
+          "Chemistry": []
+        },
+        {
+          "Computer science": [
+            {
+              "ID": "COSC1076",
+              "Name": "Advanced Programming Techniques"
+            },
+            {
+              "ID": "COSC1093",
+              "Name": "Scripting Language Programming"
+            },
+            {
+              "ID": "COSC1107",
+              "Name": "Computing Theory"
+            },
+            {
+              "ID": "COSC1111",
+              "Name": "Data Communication and Net-Centric Computing"
+            },
+            {
+              "ID": "COSC1114",
+              "Name": "Operating Systems Principles"
+            },
+            {
+              "ID": "COSC1127",
+              "Name": "Artificial Intelligence"
+            },
+            {
+              "ID": "COSC1127",
+              "Name": "Artificial Intelligence"
+            },
+            {
+              "ID": "COSC1133",
+              "Name": "Unix Systems Administration and Programming (Linux)"
+            },
+            {
+              "ID": "COSC1147",
+              "Name": "Professional Computing Practice"
+            },
+            {
+              "ID": "COSC1179",
+              "Name": "Network Programming"
+            },
+            {
+              "ID": "COSC1187",
+              "Name": "Interactive 3D Graphics and Animation"
+            },
+            {
+              "ID": "COSC1197",
+              "Name": "Distributed Systems"
+            },
+            {
+              "ID": "COSC1197",
+              "Name": "Distributed Systems"
+            },
+            {
+              "ID": "COSC1204",
+              "Name": "Agent-Oriented Programming and Design"
+            },
+            {
+              "ID": "COSC1226",
+              "Name": "Real-Time Rendering and 3D Games Programming"
+            },
+            {
+              "ID": "COSC1235",
+              "Name": "Broadcast Networks and Applications"
+            },
+            {
+              "ID": "COSC1254",
+              "Name": "Programming Using C++"
+            },
+            {
+              "ID": "COSC1284",
+              "Name": "Programming Techniques"
+            },
+            {
+              "ID": "COSC1301",
+              "Name": "Web Servers and Web Technology"
+            },
+            {
+              "ID": "COSC2104",
+              "Name": "Document Markup Languages"
+            },
+            {
+              "ID": "COSC2123",
+              "Name": "Algorithms and Analysis"
+            },
+            {
+              "ID": "COSC2271",
+              "Name": "Digital Media Computing"
+            },
+            {
+              "ID": "COSC2276",
+              "Name": "Web Development Technologies"
+            },
+            {
+              "ID": "COSC2299",
+              "Name": "Software Engineering: Process and Tools"
+            },
+            {
+              "ID": "COSC2309",
+              "Name": "Mobile Application Development"
+            },
+            {
+              "ID": "COSC2353",
+              "Name": "Electronic Commerce and Enterprise Systems"
+            },
+            {
+              "ID": "COSC2391",
+              "Name": "Software Architecture: Design and Implementation"
+            },
+            {
+              "ID": "COSC2404",
+              "Name": "Database Administration"
+            },
+            {
+              "ID": "COSC2406",
+              "Name": "Database Systems"
+            },
+            {
+              "ID": "COSC2406",
+              "Name": "Database Systems"
+            },
+            {
+              "ID": "COSC2408",
+              "Name": "Programming Project 1"
+            },
+            {
+              "ID": "COSC2409",
+              "Name": "Programming Project 2"
+            },
+            {
+              "ID": "COSC2412",
+              "Name": "Unix Essentials for System Administrators"
+            },
+            {
+              "ID": "COSC2413",
+              "Name": "Web Programming"
+            },
+            {
+              "ID": "COSC2471",
+              "Name": "iPhone Software Engineering"
+            },
+            {
+              "ID": "COSC2473",
+              "Name": "Introduction to Computer Systems and Platform Technologies"
+            },
+            {
+              "ID": "COSC2536",
+              "Name": "Security in Computing and Information Technology"
+            },
+            {
+              "ID": "COSC2626",
+              "Name": "Cloud Computing"
+            },
+            {
+              "ID": "COSC2626",
+              "Name": "Cloud Computing"
+            },
+            {
+              "ID": "COSC2627",
+              "Name": "Discrete Structures in Computing"
+            },
+            {
+              "ID": "COSC2628",
+              "Name": "User-centred Design"
+            },
+            {
+              "ID": "COSC2673",
+              "Name": "Machine Learning"
+            },
+            {
+              "ID": "COSC2674",
+              "Name": "Programming Internet of Things"
+            },
+            {
+              "ID": "COSC2675",
+              "Name": "Rapid Application Development"
+            }
+          ]
+        },
+        {
+          "Environmental science": []
+        },
+        {
+          "Food science and technology": []
+        },
+        {
+          "Games and interactive media": []
+        },
+        {
+          "Information and security": []
+        },
+        {
+          "Information technology": [
+            {
+              "ID": "ISYS1057",
+              "Name": "Database Concepts"
+            },
+            {
+              "ID": "ISYS1073",
+              "Name": "Knowledge and Data Warehousing"
+            },
+            {
+              "ID": "ISYS1087",
+              "Name": "Software Testing"
+            },
+            {
+              "ID": "ISYS1118",
+              "Name": "Software Engineering Fundamentals"
+            },
+            {
+              "ID": "ISYS1126",
+              "Name": "Web Database Applications"
+            }
+          ]
+        },
+        {
+          "Mathematics, statistics and analytics": []
+        },
+        {
+          "Nanotechnology": []
+        },
+        {
+          "Physics": []
+        },
+        {
+          "Software engineering": []
+        },
+        {
+          "Surveying and geospatial sciences": []
+        },
+        {
+          "Workplace health and safety": []
+        }
+      ]
+    },
+    {
+      "ENGINEERING": [
+        {
+          "Telecommunications engineering": []
+        },
+        {
+          "Mechatronics and manufacturing systems": []
+        },
+        {
+          "Mechanical and automotive engineering": []
+        },
+        {
+          "Environmental and sustainable engineering": []
+        },
+        {
+          "Engineering management": []
+        },
+        {
+          "Electrical and electronic engineering": []
+        },
+        {
+          "Computer engineering": []
+        },
+        {
+          "Civil engineering": []
+        },
+        {
+          "Chemical engineering": []
+        },
+        {
+          "Biomedical engineering": []
+        },
+        {
+          "Aerospace engineering and aviation": []
+        }
+      ]
+    },
+    {
+      "PROPERTY, CONSTRUCTION AND PROJECT MANAGEMENT": []
+    }
+  ]
+}
