@@ -16,9 +16,14 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        importCasualStaff();
+        hardCodedCasualStaff();
+        hardCodedTasks();
+        hardCodedCourses();
+        //printDataToScreen();
+        //importCasualStaff();
         //exportCasualStaff();
     }
+<<<<<<< HEAD
 
     public static void exportCasualStaff(){
         System.out.println("exportCasualStaff: Start");
@@ -56,67 +61,40 @@ public class Main {
 
         System.out.println("exportCasualStaff: End");
         return;
+=======
+    public static void printDataToScreen(){
+>>>>>>> master
     }
-    public static void importCasualStaff(){
-        System.out.println("importCasualStaff: Start");
 
-        Gson gson = new Gson();
+    public static void hardCodedCasualStaff(){
+        List<CasualStaff> hcCasualStaffList = new ArrayList<CasualStaff>();
+        hcCasualStaffList.add(new CasualStaff(001, "John", "Snow", "Mr", "John.Snow@rmit.edu.au", "COSC1076"));
+        hcCasualStaffList.add(new CasualStaff(002, "Gregor", "Clegane", "Mr", "Gregor.Clegane@rmit.edu.au", "MKTG1276"));
+        hcCasualStaffList.add(new CasualStaff(003, "Tyrion", "Lannister", "Dr", "Tyrion.Lannister@rmit.edu.au", "ISYS1057"));
+        hcCasualStaffList.add(new CasualStaff(004, "Daenerys", "Targaryen", "Ms", "Daenerys.Targaryen@rmit.edu.au", "BUSM4141"));
 
-        /*
-        try {
-            File jsonFile = Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\CasualStaff.json").toFile();
-            JsonObject jsonObject = gson.fromJson(new FileReader(jsonFile), JsonObject.class);
-
-            long id = jsonObject.get("ID").getAsLong();
-            String firstName = jsonObject.get("firstName").getAsString();
-            String lastName = jsonObject.get("lastName").getAsString();
-            String title = jsonObject.get("title").getAsString();
-            String email = jsonObject.get("email").getAsString();
-            JsonArray qualifications = jsonObject.getAsJsonArray("qualifications");
+        hcCasualStaffList.forEach(System.out::println);
+    }
 
 
-            System.out.println("ID = " + id);
-            System.out.println("firstName = " + firstName);
-            System.out.println("lastName = " + lastName);
-            System.out.println("title = " + title);
-            System.out.println("email = " + email);
 
-            for (JsonElement qualification : qualifications) {
-                System.out.println("Qualification = " + qualification.getAsString());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
+    public static void hardCodedTasks(){
+        List<Tasks> hcTasksList = new ArrayList<Tasks>();
+        hcTasksList.add(new Tasks(001, "Take the Iron Throne", "Werteros", "Monday", "War", "10/03/2018", "20/05/2018", "Notes Filler", 55.00, 1130, "COSC1076", "John Snow"));
 
-        try {
+        hcTasksList.forEach(System.out::println);
+    }
+    public static void hardCodedCourses(){
+        List<Courses> hcCourseList = new ArrayList<Courses>();
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC1076", "Advanced Programming Techniques"));
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC1093", "Scripting Language Programming"));
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC2353", "Electronic Commerce and Enterprise Systems"));
+        hcCourseList.add(new Courses("Science", "Information technology", "ISYS1057", "Database Concepts"));
+        hcCourseList.add(new Courses("Science", "Information technology", "ISYS1118", "Software Engineering Fundamentals"));
+        hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4141", "Financial Management"));
+        hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4525", "Managing Business Operations"));
+        hcCourseList.add(new Courses("Business and Law", "Marketing", "MKTG1276", "Marketing"));
 
-            System.out.println("Reading JSON from a file");
-            System.out.println("----------------------------");
-
-            BufferedReader br = new BufferedReader(
-                    new FileReader("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\CasualStaff.json"));
-
-            //convert the json string back to object
-            CasualStaff casualstaffobj = gson.fromJson(br, CasualStaff.class);
-
-            System.out.println("ID = " +casualstaffobj.getID());
-            System.out.println("firstName = " +casualstaffobj.getFirstName());
-            System.out.println("lastName = " +casualstaffobj.getLastName());
-            System.out.println("title = " +casualstaffobj.getTitle());
-            System.out.println("email = " +casualstaffobj.getEmail());
-
-            List listOfQualifications = casualstaffobj.getQualification();
-            for (int i = 0; i < listOfQualifications.size(); i++) {
-                System.out.println(listOfQualifications.get(i));
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        System.out.println("importCasualStaff: End");
-        return;
+        hcCourseList.forEach(System.out::println);
     }
 }
