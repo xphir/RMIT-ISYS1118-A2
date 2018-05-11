@@ -48,13 +48,13 @@ public class ExampleConvertor {
         Type type = new TypeToken<List<Todo>>() {}.getType();
         String json = gson.toJson(list, type);
         try {
-            Files.write(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.txt"), json.getBytes(), StandardOpenOption.CREATE);
+            Files.write(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.json"), json.getBytes(), StandardOpenOption.CREATE);
         } catch (IOException e) {
             e.printStackTrace();
         }
         String content ="";
         try {
-            content = new String(Files.readAllBytes(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.txt")));
+            content = new String(Files.readAllBytes(Paths.get("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\db.json")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,5 +66,4 @@ public class ExampleConvertor {
     private static Todo createTodo(String summary, String description) {
         return new Todo(current++, summary, description, false, new Date());
     }
-
 }
