@@ -1,6 +1,7 @@
 package com.xphir.rmit.HRSystem;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class CasualStaff {
     private final long ID;
@@ -8,9 +9,10 @@ public class CasualStaff {
     private String lastName;
     private String title;
     private String email;
-    private List<String> qualification;
+    private ArrayList<String> qualification;
 
     //Constructor
+    /*
     public CasualStaff(long ID, String firstName, String lastName, String title, String email) {
         this.ID = ID;
         this.firstName = firstName;
@@ -19,14 +21,15 @@ public class CasualStaff {
         this.email = email;
         this.qualification = null;
     }
+    */
 
-    public CasualStaff(long ID, String firstName, String lastName, String title, String email, List<String> qualification) {
+    public CasualStaff(long ID, String firstName, String lastName, String title, String email, ArrayList<String> qualification) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
         this.email = email;
-        this.qualification = qualification;
+        this.qualification =  new ArrayList(qualification);
     }
 
     //Getters and Setters
@@ -66,11 +69,11 @@ public class CasualStaff {
         this.email = email;
     }
 
-    public List<String> getQualification() {
+    public ArrayList getQualification() {
         return qualification;
     }
 
-    public void setQualification(List<String> qualification) {
+    public void setQualification(ArrayList<String> qualification) {
         this.qualification = qualification;
     }
 
