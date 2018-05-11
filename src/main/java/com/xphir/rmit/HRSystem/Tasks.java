@@ -143,4 +143,10 @@ public class Tasks {
     public void setAssignedStaff(String assignedStaff) {
         this.assignedStaff = assignedStaff;
     }
+
+
+    @Override
+    public String toString() {
+        return "Tasks [Task ID=" + taskId + ", Task Title=" + taskTitle + ", Locations=" + location + ", Day=" + day + ", Task Type=" + taskType + ", Start Date=" + startDate + ", End Date=" + endDate + ", Notes=" + notes + ", Time=" + time + ", Task Qualifications=" + taskQualifications + ", Assigned Staff=" + assignedStaff + "]";
+    }
 }

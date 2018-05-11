@@ -41,6 +41,7 @@ public class Main {
     public static void hardCodedTasks(){
         List<Tasks> hcTasksList = new ArrayList<Tasks>();
         hcTasksList.add(new Tasks(001, "Take the Iron Throne", "Werteros", "Monday", "War", "10/03/2018", "20/05/2018", "Notes Filler", 55.00, 1130, "COSC1076", "John Snow"));
+
         hcTasksList.forEach(System.out::println);
     }
     public static void hardCodedCourses(){
@@ -53,6 +54,7 @@ public class Main {
         hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4141", "Financial Management"));
         hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4525", "Managing Business Operations"));
         hcCourseList.add(new Courses("Business and Law", "Marketing", "MKTG1276", "Marketing"));
+
         hcCourseList.forEach(System.out::println);
     }
 }

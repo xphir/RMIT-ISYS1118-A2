@@ -31,5 +31,8 @@ public class Courses {
         return courseName;
     }
 
-
+    @Override
+    public String toString() {
+        return "Courses [School Code=" + schoolCode + ", First Name=" + deptCode + ", Course Code=" + courseCode + ", Course Name=" + courseName + "]";
+    }
 }
