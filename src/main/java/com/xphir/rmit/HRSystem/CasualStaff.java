@@ -9,7 +9,8 @@ public class CasualStaff {
     private String lastName;
     private String title;
     private String email;
-    private ArrayList<String> qualification;
+    //SHOULD BE A LIST private ArrayList<String> qualification;
+    private String qualification;
 
     //Constructor
     /*
@@ -23,13 +24,13 @@ public class CasualStaff {
     }
     */
 
-    public CasualStaff(long ID, String firstName, String lastName, String title, String email, ArrayList<String> qualification) {
+    public CasualStaff(long ID, String firstName, String lastName, String title, String email, String qualification) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
         this.email = email;
-        this.qualification =  new ArrayList(qualification);
+        this.qualification =  qualification;
     }
 
     //Getters and Setters
@@ -69,11 +70,11 @@ public class CasualStaff {
         this.email = email;
     }
 
-    public ArrayList getQualification() {
+    public String getQualification() {
         return qualification;
     }
 
-    public void setQualification(ArrayList<String> qualification) {
+    public void setQualification(String qualification) {
         this.qualification = qualification;
     }
 
