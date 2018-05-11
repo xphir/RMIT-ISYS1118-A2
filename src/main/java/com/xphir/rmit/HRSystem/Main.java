@@ -46,7 +46,7 @@ public class Main {
 
 
         //Convert object to JSON string and save into a file directly
-        try (FileWriter writer = new FileWriter("C:\\Users\\Elliot\\Documents\\GitKracken\\HRSystem\\data\\examples\\CasualStaff.json")) {
+        try (FileWriter writer = new FileWriter("/HRSystem/data/examples/CasualStaff.json")) {
 
             gson.toJson(list, writer);
 
