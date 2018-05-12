@@ -23,9 +23,8 @@ public class Main {
         //importCasualStaff();
         //exportCasualStaff();
     }
-<<<<<<< HEAD
 
-    public static void exportCasualStaff(){
+    public static void exportCasualStaff() {
         System.out.println("exportCasualStaff: Start");
 
 
@@ -36,7 +35,8 @@ public class Main {
         //Convert object to JSON string
         // Gson gson = new Gson();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Type type = new TypeToken<List<CasualStaff>>() {}.getType();
+        Type type = new TypeToken<List<CasualStaff>>() {
+        }.getType();
         String json = gson.toJson(list, type);
         /* Testing Printout
         System.out.println(json);
@@ -61,9 +61,9 @@ public class Main {
 
         System.out.println("exportCasualStaff: End");
         return;
-=======
+    }
     public static void printDataToScreen(){
->>>>>>> master
+
     }
 
     public static void hardCodedCasualStaff(){
