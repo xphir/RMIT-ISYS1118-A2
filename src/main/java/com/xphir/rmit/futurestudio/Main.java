@@ -15,6 +15,5 @@ public class Main {
         System.out.println("Name = " +generalInfoObject.getName());
         System.out.println("Website = " +generalInfoObject.getWebsite());
         System.out.println("Founders = " +generalInfoObject.getFounders());
-        generalInfoJson.forEach(System.out::println);
     }
 }

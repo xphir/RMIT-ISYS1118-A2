@@ -16,52 +16,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        hardCodedCasualStaff();
-        hardCodedTasks();
-        hardCodedCourses();
+        //hardCodedCasualStaff();
+        //hardCodedTasks();
+        //hardCodedCourses();
+        Login();
         //printDataToScreen();
         //importCasualStaff();
         //exportCasualStaff();
     }
 
-    public static void exportCasualStaff() {
-        System.out.println("exportCasualStaff: Start");
-
-
-        List<CasualStaff> casualstafflist = new ArrayList<CasualStaff>();
-        for (int i = 0; i < 20; i++) {
-            casualstafflist.add(new CasualStaff(i, "First", "Last", "Mr", "First.Last@mail.com", new ArrayList<String>));
-        }
-        //Convert object to JSON string
-        // Gson gson = new Gson();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Type type = new TypeToken<List<CasualStaff>>() {
-        }.getType();
-        String json = gson.toJson(list, type);
-        /* Testing Printout
-        System.out.println(json);
-        */
-        List<CasualStaff> fromJson = gson.fromJson(json, type);
-
-        /* Testing Printout
-        for (CasualStaff casualstaff : fromJson) {
-            System.out.println(casualstaff);
-        }
-        */
-
-
-        //Convert object to JSON string and save into a file directly
-        try (FileWriter writer = new FileWriter("/HRSystem/data/examples/CasualStaff.json")) {
-
-            gson.toJson(list, writer);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("exportCasualStaff: End");
-        return;
-    }
     public static void printDataToScreen(){
 
     }
@@ -96,5 +59,37 @@ public class Main {
         hcCourseList.add(new Courses("Business and Law", "Marketing", "MKTG1276", "Marketing"));
 
         hcCourseList.forEach(System.out::println);
+    }
+
+    /**
+     * A simple test case for the main method, verify that a pre-generated test hash verifies successfully
+     * for the password it represents, and also generate a new hash and ensure that the new hash verifies
+     * just the same.
+     */
+    public static void Login() {
+        String test_passwd = "HelloWorld";
+        String fake_hash = "$2a$06$.rCVZVOThsIa97pEDOxvGuRRgzG64bvtJ0938xuqzv18d3ZpQhstC";
+
+        HRAgent agentPasswordTestObj = new HRAgent(001, "John","Snow", "Administrator", "Science", "John.Snow@rmit.edu.au",test_passwd);
+
+        System.out.println("Testing BCrypt Password hashing and verification");
+        System.out.println("Test password: " + test_passwd);
+        System.out.println("Hashing test password...");
+        System.out.println();
+
+        String class_hash = agentPasswordTestObj.getPasswordHash();
+        System.out.println("Test class hash: " + class_hash);
+        System.out.println();
+        System.out.println("Verifying that hash and stored hash both match for the test password...");
+        System.out.println();
+
+        String compare_class = HRAgent.checkPassword(test_passwd, class_hash)
+                ? "Passwords Match" : "Passwords do not match";
+        String compare_fake = HRAgent.checkPassword(test_passwd, fake_hash)
+                ? "Passwords Match" : "Passwords do not match";
+
+        System.out.println("Verify against class hash:   " + compare_class);
+        System.out.println("Verify against fake hash: " + compare_fake);
+
     }
 }
