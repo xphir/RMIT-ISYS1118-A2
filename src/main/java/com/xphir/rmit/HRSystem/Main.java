@@ -67,11 +67,31 @@ public class Main {
      * just the same.
      */
     public static void Login() {
-        String test_passwd = "HelloWorld";
+        
+        String John_passwd = "ForTheWatch";
+        String Gregor_passwd = "BigGregor";
+        String selectedEmail = "John.Snow@rmit.edu.au";
         String fake_hash = "$2a$06$.rCVZVOThsIa97pEDOxvGuRRgzG64bvtJ0938xuqzv18d3ZpQhstC";
 
-        HRAgent agentPasswordTestObj = new HRAgent(001, "John","Snow", "Administrator", "Science", "John.Snow@rmit.edu.au",test_passwd);
+        List<HRAgent> hrAgentsList = new ArrayList<HRAgent>();
+        hrAgentsList.add(new HRAgent(001, "John","Snow", "Administrator", "Science", "John.Snow@rmit.edu.au",John_passwd));
+        hrAgentsList.add(new HRAgent(002, "Gregor","Clegane", "Administrator", "Business and Law", "Gregor.Clegane@rmit.edu.au",Gregor_passwd));
 
+        for(HRAgent agent : hrAgentsList){
+            if(agent.getEmail().equals(selectedEmail)){
+                System.out.println(agent.getEmail());
+                String compare_class = HRAgent.checkPassword(John_passwd, agent.getPasswordHash())
+                        ? "Passwords Match" : "Passwords do not match";
+                System.out.println("Verify password:   " + compare_class);
+            } else {
+                System.out.println(agent.getEmail());
+                String compare_class = HRAgent.checkPassword(John_passwd, agent.getPasswordHash())
+                        ? "Passwords Match" : "Passwords do not match";
+                System.out.println("Verify password:   " + compare_class);
+            }
+        }
+
+        /*
         System.out.println("Testing BCrypt Password hashing and verification");
         System.out.println("Test password: " + test_passwd);
         System.out.println("Hashing test password...");
@@ -90,6 +110,7 @@ public class Main {
 
         System.out.println("Verify against class hash:   " + compare_class);
         System.out.println("Verify against fake hash: " + compare_fake);
+        */
 
     }
 }
