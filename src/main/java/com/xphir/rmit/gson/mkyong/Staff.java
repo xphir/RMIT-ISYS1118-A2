@@ -50,4 +50,9 @@ public class Staff {
     public void setSkills(List<String> skills) {
         this.skills = skills;
     }
+
+    @Override
+    public String toString() {
+        return "Staff [Name=" + name + ", Age=" + age + ", Position=" + position + ", Salary=" + salary + ", Skills=" + skills + "]";
+    }
 }
