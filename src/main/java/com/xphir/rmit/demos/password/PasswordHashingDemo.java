@@ -1,4 +1,4 @@
-package com.xphir.rmit.password;
+package com.xphir.rmit.demos.password;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

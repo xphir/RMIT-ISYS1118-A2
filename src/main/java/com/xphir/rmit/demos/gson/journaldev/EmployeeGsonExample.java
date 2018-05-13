@@ -1,4 +1,4 @@
-package com.xphir.rmit.gson.journaldev;
+package com.xphir.rmit.demos.gson.journaldev;
 
 import java.io.IOException;
 import java.nio.file.Files;

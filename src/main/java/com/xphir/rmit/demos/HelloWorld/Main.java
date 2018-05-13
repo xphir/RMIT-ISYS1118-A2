@@ -1,4 +1,4 @@
-package com.xphir.rmit.HelloWorld;
+package com.xphir.rmit.demos.HelloWorld;
 
 public class Main {
     public static void main(String[] args) {

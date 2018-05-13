@@ -1,4 +1,4 @@
-package com.xphir.rmit.futurestudio;
+package com.xphir.rmit.demos.futurestudio;
 
 import java.util.ArrayList;
 import java.util.List;

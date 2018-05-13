@@ -1,4 +1,4 @@
-package com.xphir.rmit.password;
+package com.xphir.rmit.demos.password;
 /**
  * Author: Ian Gallagher <igallagher@securityinnovation.com>
  *

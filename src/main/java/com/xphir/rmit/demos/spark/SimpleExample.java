@@ -1,4 +1,4 @@
-package com.xphir.rmit.spark;
+package com.xphir.rmit.demos.spark;
 
 import static spark.Spark.*;
 

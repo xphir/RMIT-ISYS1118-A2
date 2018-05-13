@@ -1,4 +1,4 @@
-package com.xphir.rmit.guitest;
+package com.xphir.rmit.demos.guitest;
 
 import javax.swing.*;
 

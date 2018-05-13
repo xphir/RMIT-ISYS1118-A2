@@ -1,4 +1,4 @@
-package com.xphir.rmit.gson.vogella;
+package com.xphir.rmit.demos.gson.vogella;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

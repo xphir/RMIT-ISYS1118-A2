@@ -1,4 +1,4 @@
-package com.xphir.rmit.jsonsimple;
+package com.xphir.rmit.demos.jsonsimple;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

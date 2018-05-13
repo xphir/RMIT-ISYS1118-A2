@@ -1,4 +1,4 @@
-package com.xphir.rmit.gson.example;
+package com.xphir.rmit.demos.gson.example;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

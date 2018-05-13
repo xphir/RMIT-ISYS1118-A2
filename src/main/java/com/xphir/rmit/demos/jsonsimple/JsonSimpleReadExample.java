@@ -1,4 +1,4 @@
-package com.xphir.rmit.jsonsimple;
+package com.xphir.rmit.demos.jsonsimple;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

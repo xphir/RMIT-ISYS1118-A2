@@ -1,4 +1,4 @@
-package com.xphir.rmit.FilePath;
+package com.xphir.rmit.demos.FilePath;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

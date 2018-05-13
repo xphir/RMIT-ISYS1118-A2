@@ -1,4 +1,4 @@
-package com.xphir.rmit.FilePath;
+package com.xphir.rmit.demos.FilePath;
 import java.io.File;
 
 public class MainClass {

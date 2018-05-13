@@ -1,4 +1,4 @@
-package com.xphir.rmit.gson.mkyong;
+package com.xphir.rmit.demos.gson.mkyong;
 
 import java.math.BigDecimal;
 import java.util.List;
