@@ -1,32 +1,28 @@
 package com.xphir.rmit.assignment;
-import java.util.*;
 
+import java.util.Scanner;
 
-
-public class DashboardFilter{
+public class DashboardFilter {
 
 	private static final Scanner sc = new Scanner(System.in);
-		
-	
-	public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		// DO NOT CHANGE any code main method!
 
-		//Used for testing code		
-		//startup();
-		
+		// Used for testing code
+		// startup();
+
 		// declare variables used for menu
 		String userInput;
 		char selection = 0;
 
 		// implementation of the program menu
-		do
-		{
+		do {
 
 			// print menu to screen
 			System.out.println("*** HR Task Assignment Menu ***");
 			System.out.println();
-			
+
 			System.out.printf("%-25s%s\n", "Demo Menu (Create > Edit > Delete Tasks )", "A");
 			System.out.printf("%-25s%s\n", "Filler Option 1", "B");
 			System.out.printf("%-25s%s\n", "Filler Option 2", "C");
@@ -42,69 +38,63 @@ public class DashboardFilter{
 			System.out.println();
 
 			// validate selection input length
-			if (userInput.length() != 1)
-			{
+			if (userInput.length() != 1) {
 				System.out.println("Error - invalid selection!");
-			}
-			else
-			{
+			} else {
 				// make selection "case insensitive"
 				selection = Character.toUpperCase(userInput.charAt(0));
 
 				// process user's selection
-				switch (selection)
-		        {
-			        case 'A':
-			        	System.out.println("*** Option A Selected ***");
-			    		startup();
-			        	//methodSelect01();
-			        	break;
-			
-			        case 'B':
-			        	System.out.println("*** Option B Selected ***");
-			        	//methodSelect01();
-			        	break;
-			
-			        case 'C':
-			        	System.out.println("*** Option C Selected ***");
-			        	//methodSelect01();
-			        	break;
-			
-			        case 'D':
-			        	System.out.println("*** Option D Selected ***");
-			        	//methodSelect01();
-			        	break;
-			
-			        case 'E':
-			        	System.out.println("*** Option E Selected ***");
-			        	//methodSelect01();
-			        	break;
-			
-			        case 'X':
-			        	System.out.println("Exiting the program...");
-			        	//exit();
-			        	break;
-			
-			        default:
-			           System.out.println("Error - invalid selection!");
-		        }
+				switch (selection) {
+				case 'A':
+					System.out.println("*** Option A Selected ***");
+					startup();
+					// methodSelect01();
+					break;
+
+				case 'B':
+					System.out.println("*** Option B Selected ***");
+					// methodSelect01();
+					break;
+
+				case 'C':
+					System.out.println("*** Option C Selected ***");
+					// methodSelect01();
+					break;
+
+				case 'D':
+					System.out.println("*** Option D Selected ***");
+					// methodSelect01();
+					break;
+
+				case 'E':
+					System.out.println("*** Option E Selected ***");
+					// methodSelect01();
+					break;
+
+				case 'X':
+					System.out.println("Exiting the program...");
+					// exit();
+					break;
+
+				default:
+					System.out.println("Error - invalid selection!");
+				}
 			}
 			System.out.println();
-			
-		} 
-		while (selection != 'X');
+
+		} while (selection != 'X');
 	}
-	
-    //used for loading test code
-	private static void startup()
-	   {
+
+	// used for loading test code
+	private static void startup() {
 		Task tasks = new Task("001", "TITLE");
 		if (tasks.createTask()) {
 			System.out.println("Task Created");
 		} else {
 			System.out.println("Task Not Created");
 		}
-		
+
 		System.out.println("Current Task Values");
 		System.out.println("Title: " + tasks.getTitle());
 		System.out.println("Location: " + tasks.getLocation());
@@ -120,17 +110,18 @@ public class DashboardFilter{
 		System.out.println("======================================");
 		System.out.println("");
 
-		
 		System.out.println("You will now edit a Task");
 		System.out.println("Type a new task Title");
 		String t_tit = sc.nextLine();
-		
-		if (tasks.editTask(0, tasks.getId(), t_tit, tasks.getLocation(), tasks.getDay(), tasks.getTaskType(), tasks.getStartDate(), tasks.getEndDate(), tasks.getTaskQual(), tasks.getNotes(), tasks.getTaskLengthHrs(), tasks.getTime(), tasks.getAssignedStaff())){
+
+		if (tasks.editTask(0, tasks.getId(), t_tit, tasks.getLocation(), tasks.getDay(), tasks.getTaskType(),
+				tasks.getStartDate(), tasks.getEndDate(), tasks.getTaskQual(), tasks.getNotes(),
+				tasks.getTaskLengthHrs(), tasks.getTime(), tasks.getAssignedStaff())) {
 			System.out.println("Task Created");
 		} else {
 			System.out.println("Task Not Created");
 		}
-		
+
 		System.out.println("Current Task Values");
 		System.out.println("Title: " + tasks.getTitle());
 		System.out.println("Location: " + tasks.getLocation());
@@ -145,13 +136,13 @@ public class DashboardFilter{
 		System.out.println("");
 		System.out.println("======================================");
 		System.out.println("");
-		
-		if (tasks.deleteTask2()){
+
+		if (tasks.deleteTask2()) {
 			System.out.println("Task Created");
 		} else {
 			System.out.println("Task Not Created");
 		}
-		
+
 		System.out.println("Current Task Values");
 		System.out.println("Title: " + tasks.getTitle());
 		System.out.println("Location: " + tasks.getLocation());
@@ -166,42 +157,35 @@ public class DashboardFilter{
 		System.out.println("");
 		System.out.println("======================================");
 		System.out.println("");
-		
+
 		return;
-	   }
-	
-	public void agentLogin()
-	{
-		
 	}
-	
-	public void dashboard()
-	{
-		
+
+	public void agentLogin() {
+
 	}
-	
-	public void dashboardFilter()
-	{
-		
+
+	public void dashboard() {
+
 	}
-	
-	public void viewTask()
-	{
-		
+
+	public void dashboardFilter() {
+
 	}
-	
-	public void massViewTask()
-	{
-		
+
+	public void viewTask() {
+
 	}
-	
-	public void reportsMenu()
-	{
-		
+
+	public void massViewTask() {
+
 	}
-	
-	public void payrollMenu()
-	{
-		
+
+	public void reportsMenu() {
+
+	}
+
+	public void payrollMenu() {
+
 	}
 }

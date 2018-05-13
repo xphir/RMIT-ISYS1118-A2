@@ -1,6 +1,6 @@
 package com.xphir.rmit.assignment;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Task extends TaskArea {
 	public String taskId, taskTitle, location, day, taskType, startDate, endDate, taskQual, notes;
@@ -300,6 +300,18 @@ public class Task extends TaskArea {
 	public void massCreate() {
 		boolean createSuccess = false;
 		createSuccess = createTask();
+
+	}
+
+	public void Main() {
+		Task t = new Task(null, null);
+		t.createTask();
+		int taskNum = 0;
+		t.editTask(taskNum, taskId, taskTitle, location, day, taskType, startDate, endDate, taskQual, notes,
+				taskLengthHrs, time, assignedStaff);
+		t.deleteTask();
+		t.viewTask();
+		t.viewAllTasks();
 
 	}
 
