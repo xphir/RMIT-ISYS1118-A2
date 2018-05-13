@@ -3,7 +3,9 @@
 ***
 ## Document Areas
 /src/main/java/com/xphir/rmit -is our code
+
 /diagrams - is our attached documents
+
 /data - is our data files
 
 ***
