@@ -14,10 +14,10 @@
 
 | Name       		| Email         				| A2 Contribution	|
 |:-----------------:|:-----------------------------:|:-----------------:|
-| Elliot Schot      | s3530160@student.rmit.edu.au	| 0%				|
-| Sreeja Manikyam	| s3705865@student.rmit.edu.au	| 0%				|
-| Alex Shen			| s3607881@student.rmit.edu.au	| 0%				|
-| Michael Mai		| s3574846@student.rmit.edu.au	| 0%				|
+| Elliot Schot      | s3530160@student.rmit.edu.au	| 25%				|
+| Sreeja Manikyam	| s3705865@student.rmit.edu.au	| 25%				|
+| Alex Shen			| s3607881@student.rmit.edu.au	| 25%				|
+| Michael Mai		| s3574846@student.rmit.edu.au	| 25%				|
 
 ***
 ## Other Notes
