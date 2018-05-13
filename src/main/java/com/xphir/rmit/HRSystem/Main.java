@@ -13,8 +13,12 @@ import java.lang.reflect.Type;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
+
+    private static final Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         //hardCodedCasualStaff();
         //hardCodedTasks();
@@ -66,29 +70,66 @@ public class Main {
      * for the password it represents, and also generate a new hash and ensure that the new hash verifies
      * just the same.
      */
+
+    //NOTE THIS CODE IS CURRENTLY BUGGED AND DOESNT WORK
     public static void Login() {
-        
+        String emailInput;
+        String passwordInput;
+        HRAgent selectedAgent = null;
+        HRAgent loggedInAs = null;
+
+
+
+        //Initialise HRAgen data
         String John_passwd = "ForTheWatch";
         String Gregor_passwd = "BigGregor";
-        String selectedEmail = "John.Snow@rmit.edu.au";
         String fake_hash = "$2a$06$.rCVZVOThsIa97pEDOxvGuRRgzG64bvtJ0938xuqzv18d3ZpQhstC";
 
         List<HRAgent> hrAgentsList = new ArrayList<HRAgent>();
         hrAgentsList.add(new HRAgent(001, "John","Snow", "Administrator", "Science", "John.Snow@rmit.edu.au",John_passwd));
         hrAgentsList.add(new HRAgent(002, "Gregor","Clegane", "Administrator", "Business and Law", "Gregor.Clegane@rmit.edu.au",Gregor_passwd));
 
-        for(HRAgent agent : hrAgentsList){
-            if(agent.getEmail().equals(selectedEmail)){
-                System.out.println(agent.getEmail());
-                String compare_class = HRAgent.checkPassword(John_passwd, agent.getPasswordHash())
-                        ? "Passwords Match" : "Passwords do not match";
-                System.out.println("Verify password:   " + compare_class);
+
+        System.out.println("*** HR System Login ***");
+        System.out.println();
+        System.out.print("Please enter your email address: ");
+        emailInput = sc.nextLine();
+        System.out.println();
+
+        //selection = Character.toUpperCase(userInput.charAt(0));
+
+        //if email input was added go here
+
+        //find the email in the system
+        for(HRAgent agent : hrAgentsList) {
+            if (agent.getEmail().equals(emailInput)) {
+                selectedAgent = agent;
+
             } else {
-                System.out.println(agent.getEmail());
-                String compare_class = HRAgent.checkPassword(John_passwd, agent.getPasswordHash())
-                        ? "Passwords Match" : "Passwords do not match";
-                System.out.println("Verify password:   " + compare_class);
+                //email doest match
             }
+        }
+
+        System.out.println("Entered Email:   " + emailInput);
+        System.out.println("Selected Email:   " + selectedAgent.getEmail());
+        System.out.println();
+
+        System.out.print("Please enter your password: ");
+        passwordInput = sc.nextLine();
+
+        System.out.println();
+        System.out.println("Entered Password: " + passwordInput);
+        System.out.println("Expected Hash: " + selectedAgent.getPasswordHash());
+        System.out.println("Entered Hash: " + HRAgent.hashPassword(passwordInput));
+
+        if (selectedAgent.getPasswordHash().equals(HRAgent.hashPassword(passwordInput)))
+        {
+            System.out.println("Verify password: " + selectedAgent.getEmail());
+            loggedInAs = selectedAgent;
+            return;
+        }
+        else {
+            System.out.println("Error - Password incorrect!");
         }
 
         /*
