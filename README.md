@@ -22,9 +22,13 @@
 ***
 ## Other Notes
 
-Documents Attached (Found it /diagrams)
-+ 
-
+Documents Attached (Found in /diagrams)
++Activity Diagram.pdf
++Communication Diagram.pdf
++SRS Diagram.pdf
++Sequence Diagram.pdf
++State Diagram.pdf	
++UPDATED Use Case Diagram.pdf
 
 Our Code Methods are as follows
 + Import/Export JSON data into live
