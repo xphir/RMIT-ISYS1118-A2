@@ -2,12 +2,9 @@
 
 ***
 ## Document Areas
-
-Assignment 2 Code:\src\main\java\com\xphir\rmit\HRSystem
-
-Assignment 1 Code: \src\main\java\com\xphir\rmit\assignment
-
-Databases (not in use): \data
+/src/main/java/com/xphir/rmit -is our code
+/diagrams - is our attached documents
+/data - is our data files
 
 ***
 
@@ -23,8 +20,8 @@ Databases (not in use): \data
 ***
 ## Other Notes
 
-Documents Attached
-+ TO FILL
+Documents Attached (Found it /diagrams)
++ 
 
 
 Our Code Methods are as follows

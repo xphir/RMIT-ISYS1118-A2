@@ -303,7 +303,7 @@ public class Task extends TaskArea {
 
 	}
 
-	public void Main() {
+	public void main() {
 		Task t = new Task(null, null);
 		t.createTask();
 		int taskNum = 0;
