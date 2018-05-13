@@ -1,0 +1,48 @@
+{
+{
+  "empID": 99,
+  "name": "John",
+  "permanent": true,
+  "address": {
+    "street": "17 Delbridge St",
+    "city": "Fitzroy North",
+    "zipcode": 3068
+  },
+  "phoneNumbers": [
+    1234222244,
+    9812354
+  ],
+  "role": "Assistant",
+  "cities": [
+    "Sydney",
+    "Melbourne"
+  ],
+  "properties": {
+    "age": "24 Years",
+    "salary": "$1800 AUD"
+  }
+}
+{
+  "empID": 100,
+  "name": "David",
+  "permanent": false,
+  "address": {
+    "street": "BTM 1st Stage",
+    "city": "Bangalore",
+    "zipcode": 560100
+  },
+  "phoneNumbers": [
+    123456,
+    987654
+  ],
+  "role": "Manager",
+  "cities": [
+    "Los Angeles",
+    "New York"
+  ],
+  "properties": {
+    "age": "28 years",
+    "salary": "1000 Rs"
+  }
+}
+}

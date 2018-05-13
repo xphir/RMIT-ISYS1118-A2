@@ -1,0 +1,63 @@
+{
+  "CasualStaffData": [
+    {
+      "csID": "000",
+      "first_name": "John",
+      "last_name": "Snow",
+      "title": "mr",
+      "email": "John.Snow@rmit.edu.au",
+      "qualification": [
+        "COSC2627-TUT",
+        "COSC2627-MAR"
+      ]
+    },
+    {
+      "csID": "001",
+      "first_name": "Gregor",
+      "last_name": "Clegane",
+      "title": "mr",
+      "email": "Gregor.Clegane@rmit.edu.au",
+      "qualification": [
+        "BIOL2375-TUT",
+        "BIOL2375-MAR",
+        "BIOL2375-PLA",
+        "BIOL2375-LEC"
+      ]
+    },
+    {
+      "csID": "002",
+      "first_name": "Tyrion",
+      "last_name": "Lannister",
+      "title": "dr",
+      "email": "Tyrion.Lannister@rmit.edu.au",
+      "qualification": [
+        "LAW2447-MAR",
+        "LAW2447-PLA"
+      ]
+    },
+    {
+      "csID": "003",
+      "first_name": "Daenerys",
+      "last_name": "Targaryen",
+      "title": "ms",
+      "email": "Daenerys.Targaryen@rmit.edu.au",
+      "qualification": [
+        "ToFill3",
+        "ToFill4"
+      ]
+    },
+    {
+      "csID": "004",
+      "first_name": "Brienne",
+      "last_name": "Tarth",
+      "title": "dr",
+      "email": "Brienne.Tarth@rmit.edu.au",
+      "qualification": [
+        "BIOL2375-TUT",
+        "BIOL2375-MAR",
+        "BIOL2375-PLA",
+        "BIOL2375-LEC"
+      ]
+    }
+  ]
+}
