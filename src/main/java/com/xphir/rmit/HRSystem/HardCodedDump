@@ -1,0 +1,130 @@
+    //IGNORE BELLOW
+    //OLD HARDCODED DATA
+
+    public static void hardCodedHRAgents() {
+        String John_passwd = "ForTheWatch";
+        String Gregor_passwd = "BigGregor";
+
+        List<HRAgent> hrAgentsList = new ArrayList<HRAgent>();
+        hrAgentsList.add(new HRAgent(001, "John", "Snow", "Administrator", "Science", "John.Snow@rmit.edu.au", John_passwd));
+        hrAgentsList.add(new HRAgent(002, "Gregor", "Clegane", "Administrator", "Business and Law", "Gregor.Clegane@rmit.edu.au", Gregor_passwd));
+    }
+
+    public static void hardCodedCasualStaff(){
+        List<CasualStaff> hcCasualStaffList = new ArrayList<CasualStaff>();
+        hcCasualStaffList.add(new CasualStaff(001, "John", "Snow", "Mr", "John.Snow@rmit.edu.au", "COSC1076"));
+        hcCasualStaffList.add(new CasualStaff(002, "Gregor", "Clegane", "Mr", "Gregor.Clegane@rmit.edu.au", "MKTG1276"));
+        hcCasualStaffList.add(new CasualStaff(003, "Tyrion", "Lannister", "Dr", "Tyrion.Lannister@rmit.edu.au", "ISYS1057"));
+        hcCasualStaffList.add(new CasualStaff(004, "Daenerys", "Targaryen", "Ms", "Daenerys.Targaryen@rmit.edu.au", "BUSM4141"));
+    }
+
+    public static void test() {
+        //COURSES
+        List<School.Department.Course> courseCOSC = new ArrayList<>();
+        courseCOSC.add(new School.Department.Course("Advanced Programming Techniques", "COSC1076"));
+        courseCOSC.add(new School.Department.Course("Scripting Language Programming", "COSC1093"));
+        courseCOSC.add(new School.Department.Course("Electronic Commerce and Enterprise Systems", "COSC2353"));
+
+        List<School.Department.Course> courseISYS = new ArrayList<>();
+        courseISYS.add(new School.Department.Course("Database Concepts", "ISYS1057"));
+        courseISYS.add(new School.Department.Course("Software Engineering Fundamentals", "ISYS1118"));
+
+        List<School.Department.Course> courseBUSM = new ArrayList<>();
+        courseBUSM.add(new School.Department.Course("Financial Management", "BUSM4141"));
+        courseBUSM.add(new School.Department.Course("Managing Business Operations", "BUSM4525"));
+
+        List<School.Department.Course> courseMKTG = new ArrayList<>();
+        courseMKTG.add(new School.Department.Course("Marketing", "MKTG1276"));
+
+        //DEPARTMENTS
+        List<School.Department> departmentSCI = new ArrayList<>();
+        departmentSCI.add(new School.Department("Computer Science", "COSC", courseCOSC));
+        departmentSCI.add(new School.Department("Information Technology", "ISYS", courseISYS));
+
+        List<School.Department> departmentBUS = new ArrayList<>();
+        departmentBUS.add(new School.Department("Business Management", "BUSM", courseBUSM));
+        departmentBUS.add(new School.Department("Marketing", "MKTG", courseMKTG));
+
+        //SCHOOLS
+        List<School> schools = new ArrayList<>();
+        schools.add(new School("School of Science", "SCI", departmentSCI));
+        schools.add(new School("Business and Law", "BUS", departmentBUS));
+
+        //EXPORT
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
+        String schoolJSON = CoursesExportGson.toJson(schools);
+        System.out.println(schoolJSON);
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/examples/CoursesNested.json")) {
+
+            CoursesExportGson.toJson(schools, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void hardCodedCourses(){
+        List<Courses> hcCourseList = new ArrayList<Courses>();
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC1076", "Advanced Programming Techniques"));
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC1093", "Scripting Language Programming"));
+        hcCourseList.add(new Courses("Science", "Computer science", "COSC2353", "Electronic Commerce and Enterprise Systems"));
+        hcCourseList.add(new Courses("Science", "Information technology", "ISYS1057", "Database Concepts"));
+        hcCourseList.add(new Courses("Science", "Information technology", "ISYS1118", "Software Engineering Fundamentals"));
+        hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4141", "Financial Management"));
+        hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4525", "Managing Business Operations"));
+        hcCourseList.add(new Courses("Business and Law", "Marketing", "MKTG1276", "Marketing"));
+
+        //hcCourseList.forEach(System.out::println);
+
+        //EXPORT LIST TO JSON
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
+        String restaurantJson = CoursesExportGson.toJson(hcCourseList);
+        System.out.println(restaurantJson);
+
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/examples/Courses.json")) {
+
+            CoursesExportGson.toJson(hcCourseList, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //IMPORT JSON TO LIST
+
+        Gson CoursesImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/examples/Courses.json")) {
+            // Convert JSON to Java Object
+            Courses[] courseList = CoursesImportGson.fromJson(reader, Courses[].class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void hardCodedTasks(){
+        List<Tasks> hcTasksList = new ArrayList<Tasks>();
+        hcTasksList.add(new Tasks(001, "Take the Iron Throne", "Werteros", "Monday", "War", "10/03/2018", "20/05/2018", "Notes Filler", 55.00, 1130, "COSC1076", "John Snow"));
+
+        Gson tasksExportGson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter writer = new FileWriter("data/examples/Tasks.json")) {
+
+            tasksExportGson.toJson(hcTasksList, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
