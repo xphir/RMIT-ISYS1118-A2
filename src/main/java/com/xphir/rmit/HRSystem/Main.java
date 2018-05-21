@@ -18,13 +18,15 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        HRAgent CurrentAgent = Login();
+        System.out.println("MAIN CURRENT AGENT " + CurrentAgent.getEmail());
         //hardCodedCasualStaff();
         //hardCodedTasks();
         //hardCodedCourses();
-        importCourseNested();
+        //importCourseNested();
+        //exportHRAgents();
         //test();
         //importCourses();
-        //Login();
         //printDataToScreen();
         //importCasualStaff();
         //exportCasualStaff();
@@ -207,40 +209,67 @@ public class Main {
 
     //NOTE THIS CODE IS CURRENTLY BUGGED AND DOESNT WORK
 
-    public static void Login() {
-        String emailInput;
-        String passwordInput;
-        HRAgent selectedAgent = null;
-        HRAgent loggedInAs = null;
 
-
-
-        //Initialise HRAgen data
+    public static void exportHRAgents() {
         String John_passwd = "ForTheWatch";
         String Gregor_passwd = "BigGregor";
-        String fake_hash = "$2a$06$.rCVZVOThsIa97pEDOxvGuRRgzG64bvtJ0938xuqzv18d3ZpQhstC";
-
 
         List<HRAgent> hrAgentsList = new ArrayList<HRAgent>();
         hrAgentsList.add(new HRAgent(001, "John","Snow", "Administrator", "Science", "John.Snow@rmit.edu.au",John_passwd));
         hrAgentsList.add(new HRAgent(002, "Gregor","Clegane", "Administrator", "Business and Law", "Gregor.Clegane@rmit.edu.au",Gregor_passwd));
 
+        //EXPORT HR AGENTS
+        //EXPORT
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
+        String schoolJSON = CoursesExportGson.toJson(hrAgentsList);
+        System.out.println(schoolJSON);
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/examples/HRAgents.json")) {
+
+            CoursesExportGson.toJson(hrAgentsList, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static HRAgent Login(){
+        String emailInput;
+        String passwordInput;
+        HRAgent selectedAgent = null;
+        HRAgent loggedInAs = null;
+        List<HRAgent> hrAgentsList = null;
+
+        Gson HRAgentsImportGson = new Gson();
+
+        //READ JSON FILE
+        try (Reader reader = new FileReader("data/examples/HRAgents.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
+            hrAgentsList = HRAgentsImportGson.fromJson(reader, collectionType);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("*** HR System Login ***");
         System.out.println();
         System.out.print("Please enter your email address: ");
-        emailInput = sc.nextLine();
+        //auto settings user to John Snow for simplicities sake
+        //emailInput = sc.nextLine();
+        emailInput = "John.Snow@rmit.edu.au";
         System.out.println();
 
         //selection = Character.toUpperCase(userInput.charAt(0));
 
-        //if email input was added go here
-
-        //find the email in the system
+        //Find the email in the system and set the value of said match to 'selectedAgent'
         for(HRAgent agent : hrAgentsList) {
             if (agent.getEmail().equals(emailInput)) {
                 selectedAgent = agent;
-
             } else {
                 //email doest match
             }
@@ -255,40 +284,9 @@ public class Main {
 
         System.out.println();
         System.out.println("Entered Password: " + passwordInput);
-        System.out.println("Expected Hash: " + selectedAgent.getPasswordHash());
-        System.out.println("Entered Hash: " + HRAgent.hashPassword(passwordInput));
-
-        if (selectedAgent.getPasswordHash().equals(HRAgent.hashPassword(passwordInput)))
-        {
-            System.out.println("Verify password: " + selectedAgent.getEmail());
-            loggedInAs = selectedAgent;
-            return;
-        }
-        else {
-            System.out.println("Error - Password incorrect!");
-        }
-
-        /*
-        System.out.println("Testing BCrypt Password hashing and verification");
-        System.out.println("Test password: " + test_passwd);
-        System.out.println("Hashing test password...");
-        System.out.println();
-
-        String class_hash = agentPasswordTestObj.getPasswordHash();
-        System.out.println("Test class hash: " + class_hash);
-        System.out.println();
-        System.out.println("Verifying that hash and stored hash both match for the test password...");
-        System.out.println();
-
-        String compare_class = HRAgent.checkPassword(test_passwd, class_hash)
-                ? "Passwords Match" : "Passwords do not match";
-        String compare_fake = HRAgent.checkPassword(test_passwd, fake_hash)
-                ? "Passwords Match" : "Passwords do not match";
-
-        System.out.println("Verify against class hash:   " + compare_class);
-        System.out.println("Verify against fake hash: " + compare_fake);
-        */
-
-
+        boolean PasswordCorrect = selectedAgent.verifyPassword(passwordInput);
+        System.out.println("Password Correct: " + PasswordCorrect);
+        System.out.println("You are now logged in as " + selectedAgent.getFirstName() + " " + selectedAgent.getLastName());
+        return selectedAgent;
     }
 }

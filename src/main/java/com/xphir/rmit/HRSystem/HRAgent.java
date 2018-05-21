@@ -125,4 +125,15 @@ public class HRAgent {
         return(password_verified);
     }
 
+    public boolean verifyPassword(String password_plaintext) {
+        boolean password_verified = false;
+
+        if(null == this.getPasswordHash() || !this.getPasswordHash().startsWith("$2a$"))
+            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+
+        password_verified = BCrypt.checkpw(password_plaintext, this.getPasswordHash());
+
+        return(password_verified);
+    }
+
 }
