@@ -1,0 +1,74 @@
+[
+  {
+    "schoolName": "School of Science",
+    "schoolCode": "SCI",
+    "Department": [
+      {
+        "departmentName": "Computer Science",
+        "departmentCode": "COSC",
+        "Course": [
+          {
+            "courseName": "Advanced Programming Techniques",
+            "courseCode": "COSC1076"
+          },
+          {
+            "courseName": "Scripting Language Programming",
+            "courseCode": "COSC1093"
+          },
+          {
+            "courseName": "Electronic Commerce and Enterprise Systems",
+            "courseCode": "COSC2353"
+          },
+          {
+            "courseName": "Data Communication and Net-Centric Computing",
+            "courseCode": "COSC1111"
+          }
+        ]
+      },
+      {
+        "departmentName": "Information Technology",
+        "departmentCode": "ISYS",
+        "Course": [
+          {
+            "courseName": "Database Concepts",
+            "courseCode": "ISYS1057"
+          },
+          {
+            "courseName": "Software Engineering Fundamentals",
+            "courseCode": "ISYS1118"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schoolName": "Business and Law",
+    "schoolCode": "BUS",
+    "Department": [
+      {
+        "departmentName": "Business Management",
+        "departmentCode": "BUSM",
+        "Course": [
+          {
+            "courseName": "Financial Management",
+            "courseCode": "BUSM4141"
+          },
+          {
+            "courseName": "Managing Business Operations",
+            "courseCode": "BUSM4525"
+          }
+        ]
+      },
+      {
+        "departmentName": "Marketing",
+        "departmentCode": "MKTG",
+        "Course": [
+          {
+            "courseName": "Marketing",
+            "courseCode": "MKTG1276"
+          }
+        ]
+      }
+    ]
+  }
+]

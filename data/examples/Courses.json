@@ -1,0 +1,50 @@
+[
+  {
+    "schoolCode": "Science",
+    "deptCode": "Computer science",
+    "courseCode": "COSC1076",
+    "courseName": "Advanced Programming Techniques"
+  },
+  {
+    "schoolCode": "Science",
+    "deptCode": "Computer science",
+    "courseCode": "COSC1093",
+    "courseName": "Scripting Language Programming"
+  },
+  {
+    "schoolCode": "Science",
+    "deptCode": "Computer science",
+    "courseCode": "COSC2353",
+    "courseName": "Electronic Commerce and Enterprise Systems"
+  },
+  {
+    "schoolCode": "Science",
+    "deptCode": "Information technology",
+    "courseCode": "ISYS1057",
+    "courseName": "Database Concepts"
+  },
+  {
+    "schoolCode": "Science",
+    "deptCode": "Information technology",
+    "courseCode": "ISYS1118",
+    "courseName": "Software Engineering Fundamentals"
+  },
+  {
+    "schoolCode": "Business and Law",
+    "deptCode": "Business Management",
+    "courseCode": "BUSM4141",
+    "courseName": "Financial Management"
+  },
+  {
+    "schoolCode": "Business and Law",
+    "deptCode": "Business Management",
+    "courseCode": "BUSM4525",
+    "courseName": "Managing Business Operations"
+  },
+  {
+    "schoolCode": "Business and Law",
+    "deptCode": "Marketing",
+    "courseCode": "MKTG1276",
+    "courseName": "Marketing"
+  }
+]
