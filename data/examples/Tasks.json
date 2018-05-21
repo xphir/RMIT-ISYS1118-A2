@@ -1,0 +1,16 @@
+[
+  {
+    "taskId": 1,
+    "taskTitle": "Take the Iron Throne",
+    "location": "Werteros",
+    "day": "Monday",
+    "taskType": "War",
+    "startDate": "10/03/2018",
+    "endDate": "20/05/2018",
+    "notes": "Notes Filler",
+    "taskLengthHrs": 55.0,
+    "time": 1130,
+    "taskQualifications": "COSC1076",
+    "assignedStaff": "John Snow"
+  }
+]
