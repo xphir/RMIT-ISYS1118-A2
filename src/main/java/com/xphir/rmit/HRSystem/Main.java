@@ -147,6 +147,7 @@ public class Main {
         return agentList;
     }
 
+    //AGENT EXPORT
     public static void exportHRAgents(List<HRAgent> agentList) {
 
         //1. Convert object to JSON string
@@ -164,6 +165,7 @@ public class Main {
         }
     }
 
+    //LOGIN METHOD
     public static HRAgent LoginNew(List<HRAgent> agentList){
         String emailInput;
         String passwordInput;
@@ -230,59 +232,59 @@ public class Main {
         }
     }
 
-    //OLD METHODS
+    //OLD METHODS (USE ["CTRL" + "/"] TO COMMENT/UNCOMMENT CODE BLOCKS)
 
-    public static HRAgent LoginOLD(){
-        String emailInput;
-        String passwordInput;
-        HRAgent selectedAgent = null;
-        HRAgent loggedInAs = null;
-        List<HRAgent> hrAgentsList = null;
-
-        Gson HRAgentsImportGson = new Gson();
-
-        //READ JSON FILE
-        try (Reader reader = new FileReader("data/examples/HRAgents.json")) {
-            // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
-            hrAgentsList = HRAgentsImportGson.fromJson(reader, collectionType);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("*** HR System Login ***");
-        System.out.println();
-        System.out.print("Please enter your email address: ");
-        //auto settings user to John Snow for simplicities sake
-        //emailInput = sc.nextLine();
-        emailInput = "John.Snow@rmit.edu.au";
-        System.out.println();
-
-        //selection = Character.toUpperCase(userInput.charAt(0));
-
-        //Find the email in the system and set the value of said match to 'selectedAgent'
-        for(HRAgent agent : hrAgentsList) {
-            if (agent.getEmail().equals(emailInput)) {
-                selectedAgent = agent;
-            } else {
-                //email doest match
-            }
-        }
-
-        System.out.println("Entered Email:   " + emailInput);
-        System.out.println("Selected Email:   " + selectedAgent.getEmail());
-        System.out.println();
-
-        System.out.print("Please enter your password: ");
-        passwordInput = sc.nextLine();
-
-        System.out.println();
-        System.out.println("Entered Password: " + passwordInput);
-        boolean PasswordCorrect = selectedAgent.verifyPassword(passwordInput);
-        System.out.println("Password Correct: " + PasswordCorrect);
-        System.out.println("You are now logged in as " + selectedAgent.getFirstName() + " " + selectedAgent.getLastName());
-        return selectedAgent;
-    }
+//    public static HRAgent LoginOLD(){
+//        String emailInput;
+//        String passwordInput;
+//        HRAgent selectedAgent = null;
+//        HRAgent loggedInAs = null;
+//        List<HRAgent> hrAgentsList = null;
+//
+//        Gson HRAgentsImportGson = new Gson();
+//
+//        //READ JSON FILE
+//        try (Reader reader = new FileReader("data/examples/HRAgents.json")) {
+//            // Convert JSON to Java Object
+//            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
+//            hrAgentsList = HRAgentsImportGson.fromJson(reader, collectionType);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("*** HR System Login ***");
+//        System.out.println();
+//        System.out.print("Please enter your email address: ");
+//        //auto settings user to John Snow for simplicities sake
+//        //emailInput = sc.nextLine();
+//        emailInput = "John.Snow@rmit.edu.au";
+//        System.out.println();
+//
+//        //selection = Character.toUpperCase(userInput.charAt(0));
+//
+//        //Find the email in the system and set the value of said match to 'selectedAgent'
+//        for(HRAgent agent : hrAgentsList) {
+//            if (agent.getEmail().equals(emailInput)) {
+//                selectedAgent = agent;
+//            } else {
+//                //email doest match
+//            }
+//        }
+//
+//        System.out.println("Entered Email:   " + emailInput);
+//        System.out.println("Selected Email:   " + selectedAgent.getEmail());
+//        System.out.println();
+//
+//        System.out.print("Please enter your password: ");
+//        passwordInput = sc.nextLine();
+//
+//        System.out.println();
+//        System.out.println("Entered Password: " + passwordInput);
+//        boolean PasswordCorrect = selectedAgent.verifyPassword(passwordInput);
+//        System.out.println("Password Correct: " + PasswordCorrect);
+//        System.out.println("You are now logged in as " + selectedAgent.getFirstName() + " " + selectedAgent.getLastName());
+//        return selectedAgent;
+//    }
 
 }
