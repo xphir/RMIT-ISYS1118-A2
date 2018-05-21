@@ -13,13 +13,18 @@ import java.lang.reflect.Type;
 import java.nio.file.Paths;
 import java.util.*;
 
+/*
+LOGIN INFORMATION
+John.Snow@rmit.edu.au Password = "ForTheWatch";
+Gregor.Clegane@rmit.edu.au Password = "BigGregor";
+*/
+
 public class Main {
 
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //John.Snow@rmit.edu.au Password = "ForTheWatch";
-        //Gregor.Clegane@rmit.edu.au Password = "BigGregor";
+
 
         //run
         System.out.println("*** Running Test ***");
