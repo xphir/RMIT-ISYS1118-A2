@@ -11,9 +11,7 @@ import com.xphir.rmit.HRSystem.CasualStaff;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -23,7 +21,10 @@ public class Main {
         //hardCodedCasualStaff();
         //hardCodedTasks();
         //hardCodedCourses();
-        Login();
+        importCourseNested();
+        //test();
+        //importCourses();
+        //Login();
         //printDataToScreen();
         //importCasualStaff();
         //exportCasualStaff();
@@ -62,7 +63,140 @@ public class Main {
         hcCourseList.add(new Courses("Business and Law", "Business Management", "BUSM4525", "Managing Business Operations"));
         hcCourseList.add(new Courses("Business and Law", "Marketing", "MKTG1276", "Marketing"));
 
-        hcCourseList.forEach(System.out::println);
+        //hcCourseList.forEach(System.out::println);
+
+        //EXPORT LIST TO JSON
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
+        String restaurantJson = CoursesExportGson.toJson(hcCourseList);
+        System.out.println(restaurantJson);
+
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/examples/Courses.json")) {
+
+            CoursesExportGson.toJson(hcCourseList, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //IMPORT JSON TO LIST
+
+        Gson CoursesImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/examples/Courses.json")) {
+            // Convert JSON to Java Object
+            Courses[] courseList = CoursesImportGson.fromJson(reader, Courses[].class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void test() {
+        //COURSES
+        List<School.Department.Course> courseCOSC = new ArrayList<>();
+        courseCOSC.add(new School.Department.Course("Advanced Programming Techniques", "COSC1076"));
+        courseCOSC.add(new School.Department.Course("Scripting Language Programming", "COSC1093"));
+        courseCOSC.add(new School.Department.Course("Electronic Commerce and Enterprise Systems", "COSC2353"));
+
+        List<School.Department.Course> courseISYS = new ArrayList<>();
+        courseISYS.add(new School.Department.Course("Database Concepts", "ISYS1057"));
+        courseISYS.add(new School.Department.Course("Software Engineering Fundamentals", "ISYS1118"));
+
+        List<School.Department.Course> courseBUSM = new ArrayList<>();
+        courseBUSM.add(new School.Department.Course("Financial Management", "BUSM4141"));
+        courseBUSM.add(new School.Department.Course("Managing Business Operations", "BUSM4525"));
+
+        List<School.Department.Course> courseMKTG = new ArrayList<>();
+        courseMKTG.add(new School.Department.Course("Marketing", "MKTG1276"));
+
+        //DEPARTMENTS
+        List<School.Department> departmentSCI = new ArrayList<>();
+        departmentSCI.add(new School.Department("Computer Science", "COSC", courseCOSC));
+        departmentSCI.add(new School.Department("Information Technology", "ISYS", courseISYS));
+
+        List<School.Department> departmentBUS = new ArrayList<>();
+        departmentBUS.add(new School.Department("Business Management", "BUSM", courseBUSM));
+        departmentBUS.add(new School.Department("Marketing", "MKTG", courseMKTG));
+
+        //SCHOOLS
+        List<School> schools = new ArrayList<>();
+        schools.add(new School("School of Science", "SCI", departmentSCI));
+        schools.add(new School("Business and Law", "BUS", departmentBUS));
+
+        //EXPORT
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
+        String schoolJSON = CoursesExportGson.toJson(schools);
+        System.out.println(schoolJSON);
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/examples/CoursesNested.json")) {
+
+            CoursesExportGson.toJson(schools, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void importCourseNested(){
+        //IMPORT
+        Gson CoursesImportGson = new Gson();
+
+        List<School> courseList = null;
+        try (Reader reader = new FileReader("data/examples/CoursesNested.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<School>>(){}.getType();
+            courseList = CoursesImportGson.fromJson(reader, collectionType);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(School school : courseList) {
+            for(School.Department department : school.getDepartment()) {
+                for(School.Department.Course course : department.getCourse()){
+                    System.out.printf("[SCHOOL]: %s\t [DEPARTMENT]: %s\n [COURSE]: %s %n", school.getSchoolName(), department.getDepartmentName(), course.getCourseName());
+                    //System.out.print("School: " + school.getSchoolName());
+                    //System.out.print("Department: " + department.getDepartmentName());
+                    //System.out.println("Course: " + course.getCourseName());
+                }
+            }
+
+        }
+    }
+
+
+    public static void importCourses(){
+        //List<Courses> courseList = new ArrayList<Courses>();
+        //List<Courses> courseList = null;
+
+        //IMPORT JSON TO LIST
+
+
+        Gson CoursesImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/examples/Courses.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<Courses>>(){}.getType();
+            List<Courses> courseList = CoursesImportGson.fromJson(reader, collectionType);
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    //courseList.forEach(System.out::println);
     }
 
     /**
@@ -72,6 +206,7 @@ public class Main {
      */
 
     //NOTE THIS CODE IS CURRENTLY BUGGED AND DOESNT WORK
+
     public static void Login() {
         String emailInput;
         String passwordInput;
@@ -153,6 +288,7 @@ public class Main {
         System.out.println("Verify against class hash:   " + compare_class);
         System.out.println("Verify against fake hash: " + compare_fake);
         */
+
 
     }
 }
