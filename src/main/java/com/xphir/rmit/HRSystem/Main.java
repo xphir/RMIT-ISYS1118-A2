@@ -18,6 +18,9 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //John.Snow@rmit.edu.au Password = "ForTheWatch";
+        //Gregor.Clegane@rmit.edu.au Password = "BigGregor";
+
         //run
         System.out.println("*** Running Test ***");
         //hardCodedTasks();
@@ -166,13 +169,14 @@ public class Main {
         System.out.println();
         System.out.print("Please enter your email address: ");
         //auto settings user to John Snow for simplicities sake
-        //emailInput = sc.nextLine();
-        emailInput = "John.Snow@rmit.edu.au";
+        //emailInput = "John.Snow@rmit.edu.au";
+        emailInput = sc.nextLine();
         System.out.println();
 
         //selection = Character.toUpperCase(userInput.charAt(0));
 
         //Find the email in the system and set the value of said match to 'selectedAgent'
+        //TODO NEED TO ADD TRY AND CATCH
         for(HRAgent agent : agentList) {
             if (agent.getEmail().equals(emailInput)) {
                 selectedAgent = agent;
