@@ -31,6 +31,8 @@ public class Main {
         //hardCodedTasks();
 
         //Declare Values
+        Scanner input = new Scanner(System.in);
+        int userChoice;
         List<School> schoolList = null;
         List<Tasks> taskList = null;
         List<HRAgent> agentList = null;
@@ -47,6 +49,8 @@ public class Main {
         HRAgent CurrentAgent = LoginNew(agentList);
         System.out.println("You are now logged in as " + CurrentAgent.getFirstName() + " " + CurrentAgent.getLastName());
 
+        //Menu
+        //userChoice = menu();
 
         //ExportData
         System.out.println("*** Exporting Tasks ***");
@@ -55,6 +59,10 @@ public class Main {
         exportCourseNested(schoolList);
     }
 
+    public static void showMenu(){
+        //this class is for testing (it will end up in main)
+
+    }
 
     //TASKS IMPORT
     public static List<Tasks> importTasks(){
