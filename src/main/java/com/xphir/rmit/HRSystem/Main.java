@@ -193,7 +193,7 @@ public class Main {
         //Find the email in the system and set the value of said match to 'selectedAgent'
         //TODO NEED TO ADD TRY AND CATCH
         for(HRAgent agent : agentList) {
-            if (agent.getEmail().equals(emailInput)) {
+            if (agent.getEmail().equalsIgnoreCase(emailInput)) {
                 selectedAgent = agent;
             } else {
                 //email doest match
