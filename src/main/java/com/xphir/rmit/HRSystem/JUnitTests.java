@@ -200,11 +200,11 @@ public class JUnitTests {
         int listSize;
         List<School> restrictedSchoolList = new ArrayList<>();
 
-        HRAgent selectedAgentNoArea = testAgentNoArea;
+        HRAgent selectedAgentNoArea = testAgentNoArea; //selecting the "logged in agent" to be an agent with no aplicable area
 
-        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentNoArea, testSchoolList);
-
-        listSize = restrictedSchoolList.size();
+        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentNoArea, testSchoolList); //process method
+        
+        listSize = restrictedSchoolList.size(); //figures out how many objects are in the list
 
         assertEquals(0, listSize);
     }
