@@ -1,16 +1,58 @@
 [
   {
     "taskId": 1,
-    "taskTitle": "Take the Iron Throne",
-    "location": "Werteros",
+    "taskTitle": "Software Engineering Fundamentals Lecture 01",
+    "location": "080.02.002",
+    "day": "Wednesday",
+    "taskType": "Lecture",
+    "startDate": "10/03/2018",
+    "endDate": "20/05/2018",
+    "notes": "Notes Filler",
+    "taskLengthHrs": 55.0,
+    "time": 930,
+    "taskQualifications": "ISYS1118",
+    "assignedStaff": "John Snow"
+  },
+  {
+    "taskId": 2,
+    "taskTitle": "Scripting Language Programming Tutorial 01",
+    "location": "",
     "day": "Monday",
-    "taskType": "War",
+    "taskType": "Tutorial",
     "startDate": "10/03/2018",
     "endDate": "20/05/2018",
     "notes": "Notes Filler",
     "taskLengthHrs": 55.0,
     "time": 1130,
-    "taskQualifications": "COSC1076",
+    "taskQualifications": "COSC1093",
+    "assignedStaff": "John Snow"
+  },
+  {
+    "taskId": 3,
+    "taskTitle": "Software Engineering Fundamentals Tutorial 01",
+    "location": "014.10.031",
+    "day": "Monday",
+    "taskType": "Tutorial",
+    "startDate": "10/03/2018",
+    "endDate": "20/05/2018",
+    "notes": "Notes Filler",
+    "taskLengthHrs": 55.0,
+    "time": 1130,
+    "taskQualifications": "ISYS1118",
+    "assignedStaff": "John Snow"
+  },
+  {
+    "taskId": 4,
+    "taskTitle": "Financial Management Lecture 01",
+    "location": "Werteros",
+    "day": "Monday",
+    "taskType": "Lecture",
+    "startDate": "10/03/2018",
+    "endDate": "20/05/2018",
+    "notes": "Notes Filler",
+    "taskLengthHrs": 55.0,
+    "time": 1130,
+    "taskQualifications": "BUSM4141",
     "assignedStaff": "John Snow"
   }
 ]

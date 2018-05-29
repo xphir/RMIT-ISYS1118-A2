@@ -72,13 +72,13 @@ public class Main {
         exportCasualStaff(casualStaffList);
     }
 
-    public static void showMenu(){
+    public static void showMenu() {
         //this class is for testing (it will end up in main)
 
     }
 
     //TASKS IMPORT
-    public static List<Tasks> importTasks(){
+    public static List<Tasks> importTasks() {
         //Declare
         List<Tasks> tasksList = null;
 
@@ -87,7 +87,8 @@ public class Main {
 
         try (Reader reader = new FileReader("data/live/Tasks.json")) {
             // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<Tasks>>(){}.getType();
+            Type collectionType = new TypeToken<ArrayList<Tasks>>() {
+            }.getType();
             tasksList = tasksImportGson.fromJson(reader, collectionType);
 
         } catch (IOException e) {
@@ -97,7 +98,7 @@ public class Main {
     }
 
     //TASKS Export
-    public static void exportTasks(List<Tasks> taskList){
+    public static void exportTasks(List<Tasks> taskList) {
         //1. Convert object to JSON string
         //Gson CoursesExportGson = new Gson();
         Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
@@ -114,14 +115,15 @@ public class Main {
     }
 
     //SCHOOL IMPORT
-    public static List<School> importCourseNested(){
+    public static List<School> importCourseNested() {
         //IMPORT
         Gson CoursesImportGson = new Gson();
 
         List<School> courseList = null;
         try (Reader reader = new FileReader("data/live/CoursesNested.json")) {
             // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<School>>(){}.getType();
+            Type collectionType = new TypeToken<ArrayList<School>>() {
+            }.getType();
             courseList = CoursesImportGson.fromJson(reader, collectionType);
 
 
@@ -133,7 +135,7 @@ public class Main {
     }
 
     //SCHOOL EXPORT
-    public static void exportCourseNested(List<School> schoolList){
+    public static void exportCourseNested(List<School> schoolList) {
         //1. Convert object to JSON string
         //Gson CoursesExportGson = new Gson();
         Gson CoursesExportGson = new GsonBuilder().setPrettyPrinting().create();
@@ -150,14 +152,15 @@ public class Main {
     }
 
     //AGENT IMPORT
-    public static List<HRAgent> importHRAgents(){
+    public static List<HRAgent> importHRAgents() {
         //IMPORT
         Gson hrAgentImportGson = new Gson();
 
         List<HRAgent> agentList = null;
         try (Reader reader = new FileReader("data/live/HRAgents.json")) {
             // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
+            Type collectionType = new TypeToken<ArrayList<HRAgent>>() {
+            }.getType();
             agentList = hrAgentImportGson.fromJson(reader, collectionType);
 
 
@@ -193,7 +196,8 @@ public class Main {
         List<CasualStaff> returnStaffList = null;
         try (Reader reader = new FileReader("data/live/HRAgents.json")) {
             // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
+            Type collectionType = new TypeToken<ArrayList<HRAgent>>() {
+            }.getType();
             returnStaffList = casualStaffImportGson.fromJson(reader, collectionType);
 
 
@@ -205,7 +209,7 @@ public class Main {
     }
 
     //CASUAL STAFF EXPORT
-    public static void exportCasualStaff(List<CasualStaff> casualStaffList){
+    public static void exportCasualStaff(List<CasualStaff> casualStaffList) {
         //1. Convert object to JSON string
         //Gson CoursesExportGson = new Gson();
         Gson casualStaffGson = new GsonBuilder().setPrettyPrinting().create();
@@ -219,8 +223,9 @@ public class Main {
             e.printStackTrace();
         }
     }
+
     //LOGIN METHOD
-    public static HRAgent LoginNew(List<HRAgent> agentList){
+    public static HRAgent LoginNew(List<HRAgent> agentList) {
         String emailInput;
         String passwordInput;
         HRAgent selectedAgent = null;
@@ -238,7 +243,7 @@ public class Main {
 
         //Find the email in the system and set the value of said match to 'selectedAgent'
         //TODO NEED TO ADD TRY AND CATCH
-        for(HRAgent agent : agentList) {
+        for (HRAgent agent : agentList) {
             if (agent.getEmail().equalsIgnoreCase(emailInput)) {
                 selectedAgent = agent;
             } else {
@@ -270,17 +275,46 @@ public class Main {
     }
 
 
-
-
     //TESTING METHODS
 
     //Set the
-    public static void showAreaTasks (HRAgent loggedInAgent) {
+    public static void showAreaTasks(HRAgent loggedInAgent) {
         List<School> restrictedSchoolList = new ArrayList<>();
+        List<Tasks> restrictedTaskList = new ArrayList<>();
 
         restrictedSchoolList = getRestrictedSchoolList(loggedInAgent);
         printOutCourses(schoolList, "ALL COURSES");
         printOutCourses(restrictedSchoolList, "COURSES ACCESS");
+
+        restrictedTaskList = getRestictedTaskList(restrictedSchoolList);
+
+        printOutTasks(restrictedTaskList, "TASK ACCESS");
+        printOutTasks(taskList, "ALL TASKS");
+    }
+
+    public static List<Tasks> getRestictedTaskList(List<School> restrictedSchoolList) {
+        List<Tasks> restictedTaskList = new ArrayList<>();
+        if (restrictedSchoolList != null) {
+            for (School school : restrictedSchoolList) {
+                for (School.Department department : school.getDepartment()) {
+                    for (School.Department.Course course : department.getCourse()) {
+                        for (Tasks task : taskList) {
+                            if (course.getCourseCode().equals(task.getTaskQualifications())) {
+                                //Task Matches
+                                restictedTaskList.add(task);
+                            } else {
+                                //Task does not match
+                            }
+                        }
+
+                    }
+                }
+            }
+        } else {
+            //NO COURSES
+        }
+
+        return restictedTaskList;
     }
 
     //Gets the list of accessible schools for an agent
@@ -297,14 +331,40 @@ public class Main {
         return schoolAcessArea;
     }
 
-    //Prints out courses
-    public static void printOutCourses(List<School> schoolList, String printTitle){
-        if (schoolList != null) {
+
+    public static void printOutTasks(List<Tasks> inputTaskList, String printTitle) {
+        if (inputTaskList != null) {
             System.out.println();
             System.out.println("===========================================================");
-            System.out.println("====================" + printTitle + "=========================");
+            System.out.println(printTitle);
             System.out.println("===========================================================");
-            for (School school : schoolList) {
+            for (Tasks task : inputTaskList) {
+                System.out.println("TaskID: " + task.getTaskId());
+                System.out.println("\tTitle: " + task.getTaskTitle());
+                System.out.println("\tLocation: " + task.getLocation());
+                System.out.println("\tDay: " + task.getDay());
+                System.out.println("\tType: " + task.getTaskType());
+                System.out.println("\tStart Date: " + task.getStartDate());
+                System.out.println("\tEnd Date: " + task.getEndDate());
+                System.out.println("\tNotes: " + task.getNotes());
+                System.out.println("\tLength (Hours): " + task.getTaskLengthHrs());
+                System.out.println("\tTime: " + task.getTime());
+                System.out.println("\tQualifications Needed: " + task.getTaskQualifications());
+                System.out.println("\tAssignedStaff: " + task.getAssignedStaff());
+                System.out.println("===========================================================");
+            }
+            System.out.println("===========================================================");
+        }
+    }
+
+    //Prints out courses
+    public static void printOutCourses(List<School> inputSchoolList, String printTitle) {
+        if (inputSchoolList != null) {
+            System.out.println();
+            System.out.println("===========================================================");
+            System.out.println(printTitle);
+            System.out.println("===========================================================");
+            for (School school : inputSchoolList) {
                 System.out.println("SCHOOL: " + school.getSchoolName());
                 for (School.Department department : school.getDepartment()) {
                     System.out.println("\tDEPARTMENT: " + department.getDepartmentName());
