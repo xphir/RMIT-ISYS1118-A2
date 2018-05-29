@@ -282,23 +282,23 @@ public class Main {
         List<School> restrictedSchoolList = new ArrayList<>();
         List<Tasks> restrictedTaskList = new ArrayList<>();
 
-        restrictedSchoolList = getRestrictedSchoolList(loggedInAgent);
+        restrictedSchoolList = getRestrictedSchoolList(loggedInAgent, schoolList);
         printOutCourses(schoolList, "ALL COURSES");
         printOutCourses(restrictedSchoolList, "COURSES ACCESS");
 
-        restrictedTaskList = getRestictedTaskList(restrictedSchoolList);
+        restrictedTaskList = getRestictedTaskList(restrictedSchoolList, taskList);
 
         printOutTasks(restrictedTaskList, "TASK ACCESS");
         printOutTasks(taskList, "ALL TASKS");
     }
 
-    public static List<Tasks> getRestictedTaskList(List<School> restrictedSchoolList) {
+    public static List<Tasks> getRestictedTaskList(List<School> restrictedSchoolList, List<Tasks> inputTaskList) {
         List<Tasks> restictedTaskList = new ArrayList<>();
         if (restrictedSchoolList != null) {
             for (School school : restrictedSchoolList) {
                 for (School.Department department : school.getDepartment()) {
                     for (School.Department.Course course : department.getCourse()) {
-                        for (Tasks task : taskList) {
+                        for (Tasks task : inputTaskList) {
                             if (course.getCourseCode().equals(task.getTaskQualifications())) {
                                 //Task Matches
                                 restictedTaskList.add(task);
@@ -318,11 +318,10 @@ public class Main {
     }
 
     //Gets the list of accessible schools for an agent
-    public static List<School> getRestrictedSchoolList(HRAgent loggedInAgent) {
+    public static List<School> getRestrictedSchoolList(HRAgent loggedInAgent, List<School> inputSchoolList) {
         List<School> schoolAcessArea = new ArrayList<>();
-        for (School school : schoolList) {
+        for (School school : inputSchoolList) {
             if (school.getSchoolCode().equals(loggedInAgent.getAccessArea())) {
-                System.out.println("*** Found Matching Access Area ***");
                 schoolAcessArea.add(school);
             } else {
                 //System.out.println("*** No Match ***");
@@ -379,6 +378,22 @@ public class Main {
         } else {
             System.out.println("*** No Vaild Courses ***");
         }
+    }
+
+    public static int getSchoolListLength(List<School> inputSchoolList){
+        int courseCount = 0;
+        if (inputSchoolList != null) {
+            for (School school : inputSchoolList) {
+                for (School.Department department : school.getDepartment()) {
+                    for (School.Department.Course course : department.getCourse()) {
+                        courseCount = courseCount + 1;
+                    }
+                }
+            }
+        } else {
+            courseCount = 0;
+        }
+        return courseCount;
     }
 
     //OLD METHODS (USE ["CTRL" + "/"] TO COMMENT/UNCOMMENT CODE BLOCKS)

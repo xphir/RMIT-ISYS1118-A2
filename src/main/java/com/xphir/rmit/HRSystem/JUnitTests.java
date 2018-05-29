@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class JUnitTests {
     //create testing data
@@ -25,16 +26,35 @@ public class JUnitTests {
     //List Data
     List<School> testSchoolList = null;
     List<School> testTaskList = null;
+    List<HRAgent> testAgentList = null;
 
     @Before
     public void setUpSchoolsList(){
         //IMPORT
         Gson CoursesImportGson = new Gson();
 
-        try (Reader reader = new FileReader("data/live/CoursesNested.json")) {
+        try (Reader reader = new FileReader("data/tests/CoursesNested.json")) {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<School>>(){}.getType();
             testSchoolList = CoursesImportGson.fromJson(reader, collectionType);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Before
+    public void setUpAgentList(){
+        //IMPORT
+        Gson hrAgentImportGson = new Gson();
+
+        List<HRAgent> agentList = null;
+        try (Reader reader = new FileReader("data/tests/HRAgents.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<HRAgent>>() {
+            }.getType();
+            testAgentList = hrAgentImportGson.fromJson(reader, collectionType);
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +66,7 @@ public class JUnitTests {
         //IMPORT
         Gson tasksImportGson = new Gson();
 
-        try (Reader reader = new FileReader("data/live/Tasks.json")) {
+        try (Reader reader = new FileReader("data/tests/Tasks.json")) {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<Tasks>>(){}.getType();
             testTaskList = tasksImportGson.fromJson(reader, collectionType);
@@ -58,7 +78,7 @@ public class JUnitTests {
 
     @Before
     public void setUpAgent(){
-        testAgent = new HRAgent(001, "John", "Snow", "Administrator", "Science", "John.Snow@rmit.edu.au", "ForTheWatch");
+        testAgent = new HRAgent(001, "John", "Snow", "Administrator", "SCI", "John.Snow@rmit.edu.au", "ForTheWatch");
     }
 
     @Before
@@ -110,15 +130,62 @@ public class JUnitTests {
     }
 
 
-    @Test
-    //Testing View Access
-    public void TestSchoolAccessCorrect(){
 
+
+
+
+    //getRestictedTaskList testing
+
+
+
+    //getRestrictedSchoolList testing
+
+    @Test
+    //checking test data is correct, if this is wrong it means the input data changed
+    public void TestSchoolListLength() {
+        int inputListCount = 0;
+
+        inputListCount = Main.getSchoolListLength(testSchoolList);
+
+        assertEquals(9, inputListCount);
     }
 
+    @Test
+    //checking resrticted data length is correct
+    public void TestRestrictedSchoolListLength(){
+        int restrictedListCount = 0;
+        List<School> restrictedSchoolList = new ArrayList<>();
+        restrictedSchoolList = Main.getRestrictedSchoolList(testAgent, testSchoolList);
+        restrictedListCount = Main.getSchoolListLength(restrictedSchoolList);
 
+        assertEquals(6,restrictedListCount);
+    }
 
+    @Test
+    public void TestRestrictedSchoolContains1(){
+        HRAgent selectedAgentGregor = testAgentList.get(1); //Selecting Gregor.Clegane@rmit.edu.au
 
+        List<School> restrictedSchoolList = new ArrayList<>();
+
+        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentGregor, testSchoolList); //Creating the restricted course list for Gregor
+
+        String resultTitle = restrictedSchoolList.get(0).getDepartment().get(0).getCourse().get(0).getCourseName(); //Getting the title of a subject from his restricted course list
+
+        assertEquals("Financial Management", resultTitle);
+    }
+
+    @Test
+    public void TestRestrictedSchoolContains2(){
+        HRAgent selectedAgentGregor = testAgentList.get(1); //Selecting Gregor.Clegane@rmit.edu.au
+
+        List<School> restrictedSchoolList = new ArrayList<>();
+
+        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentGregor, testSchoolList); //Creating the restricted course list for Gregor
+
+        String resultTitle = restrictedSchoolList.get(0).getDepartment().get(1).getCourse().get(0).getCourseName(); //Getting the title of a subject from his restricted course list
+
+        assertEquals("Marketing", resultTitle);
+    }
 
 
 
