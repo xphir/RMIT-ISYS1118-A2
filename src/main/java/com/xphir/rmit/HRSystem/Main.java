@@ -194,9 +194,9 @@ public class Main {
         Gson casualStaffImportGson = new Gson();
 
         List<CasualStaff> returnStaffList = null;
-        try (Reader reader = new FileReader("data/live/HRAgents.json")) {
+        try (Reader reader = new FileReader("data/live/CasualStaff.json")) {
             // Convert JSON to Java Object
-            Type collectionType = new TypeToken<ArrayList<HRAgent>>() {
+            Type collectionType = new TypeToken<ArrayList<CasualStaff>>() {
             }.getType();
             returnStaffList = casualStaffImportGson.fromJson(reader, collectionType);
 
