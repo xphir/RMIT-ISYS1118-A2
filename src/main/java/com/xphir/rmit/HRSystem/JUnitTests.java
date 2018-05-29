@@ -1,14 +1,60 @@
 package com.xphir.rmit.HRSystem;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.junit.*;
+import static org.junit.Assert.assertEquals;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class JUnitTests {
     //create testing data
+    //Single Data
     HRAgent testAgent;
     CasualStaff testStaff;
     Tasks testTask;
+
+    //List Data
+    List<School> testSchoolList = null;
+    List<School> testTaskList = null;
+
+    @Before
+    public void setUpSchoolsList(){
+        //IMPORT
+        Gson CoursesImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/live/CoursesNested.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<School>>(){}.getType();
+            testSchoolList = CoursesImportGson.fromJson(reader, collectionType);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Before
+    public void setUpTasksList(){
+        //IMPORT
+        Gson tasksImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/live/Tasks.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<Tasks>>(){}.getType();
+            testTaskList = tasksImportGson.fromJson(reader, collectionType);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Before
     public void setUpAgent(){
@@ -64,7 +110,11 @@ public class JUnitTests {
     }
 
 
+    @Test
+    //Testing View Access
+    public void TestSchoolAccessCorrect(){
 
+    }
 
 
 
