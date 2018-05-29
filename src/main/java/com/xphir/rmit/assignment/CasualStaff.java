@@ -12,18 +12,22 @@ public class CasualStaff
 	{
 		
 	}*/
-	
+	public void setQualification(ArrayList<String> qual)
+	{
+		this.qualification = qual;
+	}
+
 	public String getCasualStaffID()
 	{
 		return csID;
 	}
-	
+
 	public void editCasualStaff()
 	{
 		String input = null;
 		int index = 0;
 		boolean exit = false;
-		
+
 		while(exit != true)
 		{
 			try
@@ -171,7 +175,7 @@ public class CasualStaff
 			}
 		}
 	}
-	
+
 	public void viewQualification()
 	{
 		int counter = 1;
@@ -182,22 +186,30 @@ public class CasualStaff
 			counter++;
 		}
 	}
-	
+
 	public void deleteQualification(String qual)
 	{
 		qualification.remove(qual);
 		System.out.printf("\n%s deleted", qual);
 	}
-	
+
 	public void addQualification(String qual)
 	{
 		qualification.add(qual);
 		System.out.printf("\n%s added", qual);
 	}
-	
+
 	public void printMenu()
 	{
 		System.out.printf("\n---Choose what to edit for Staff %s---\n",this.csID);
-		System.out.printf("1.Staff ID\n2.First name\n3.Last name\n4.Staff title\n5.Email address\n6.Add staff qualification\n0.CANCEL\n\n---type in the index to choose which to edit---\n");		
+		System.out.printf("1.Staff ID\n2.First name\n3.Last name\n4.Staff title\n5.Email address\n6.Add staff qualification\n0.CANCEL\n\n---type in the index to choose which to edit---\n");
+	}
+
+	@Override
+	public String toString()
+	{
+		String staffInfo = null;
+		staffInfo = csID + " " + firstName + " " + lastName + " " + title + " " + email;
+		return staffInfo;
 	}
 }
