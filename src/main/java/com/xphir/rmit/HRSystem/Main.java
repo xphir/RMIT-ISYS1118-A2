@@ -395,6 +395,21 @@ public class Main {
         }
         return courseCount;
     }
+    
+    public static boolean checkQualCasualStaff(List<Tasks> taskList, CasualStaff staff)
+    {
+    	boolean qualify = false;
+    	String qualification = staff.getQualification();
+    	for(Tasks task:taskList)
+    	{
+    		if(Objects.equals(qualification, task.getTaskQualifications()))
+    		{
+    			qualify = true;
+    			return qualify;
+    		}
+    	}
+    	return qualify;
+    }
 
     //OLD METHODS (USE ["CTRL" + "/"] TO COMMENT/UNCOMMENT CODE BLOCKS)
 

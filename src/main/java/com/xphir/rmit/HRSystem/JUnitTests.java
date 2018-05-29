@@ -28,7 +28,8 @@ public class JUnitTests {
     List<School> testSchoolList = null;
     List<Tasks> testTaskList = null;
     List<HRAgent> testAgentList = null;
-
+    List<CasualStaff> testCasualStaff = null;
+    
     @Before
     public void setUpSchoolsList(){
         //IMPORT
@@ -71,6 +72,22 @@ public class JUnitTests {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<Tasks>>(){}.getType();
             testTaskList = tasksImportGson.fromJson(reader, collectionType);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Before
+    public void setUpCasualStaffList()
+    {
+    	Gson tasksImportGson = new Gson();
+
+        try (Reader reader = new FileReader("data/tests/CasualStaff.json"))
+        {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<CasualStaff>>(){}.getType();
+            testCasualStaff = tasksImportGson.fromJson(reader, collectionType);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -234,11 +251,12 @@ public class JUnitTests {
 
 
     /*
-    TEST 3
+    TEST 3.1
      */
 
     //getRestictedTaskList testing
-
+    //Test Title
+    
     @Test
     public void TestgetRestictedTaskList(){
         String expected = "Financial Management Lecture 01";
@@ -256,8 +274,106 @@ public class JUnitTests {
 
 
     /*
-    TEST 4
-     */
+    TEST 3.2
+    */
+    
+    //Test location
+    
+    @Test
+    public void TestgetRestrictedTaskList2() 
+    {
+    	String expected = "";
+    	HRAgent agentJon = testAgentList.get(0);
+    	List<School> restrictedSchoolList = new ArrayList<>();
+    	restrictedSchoolList = Main.getRestrictedSchoolList(agentJon, testSchoolList);
+    	
+    	List<Tasks> restrictedTasklist = new ArrayList<>();
+    	restrictedTasklist = Main.getRestictedTaskList(restrictedSchoolList, testTaskList);
+    	
+    	String Tasklocation = restrictedTasklist.get(0).getLocation();
+    	assertEquals(expected, Tasklocation);
+    }
+    
+    /*
+    TEST 3.2
+    */
+    //Test day
+    
+    @Test
+    public void TestgetRestrictedTaskList3() 
+    {
+    	String expected = "Monday";
+    	HRAgent agentJon = testAgentList.get(0);
+    	List<School> restrictedSchoolList = new ArrayList<>();
+    	restrictedSchoolList = Main.getRestrictedSchoolList(agentJon, testSchoolList);
+    	
+    	List<Tasks> restrictedTasklist = new ArrayList<>();
+    	restrictedTasklist = Main.getRestictedTaskList(restrictedSchoolList, testTaskList);
+    	
+    	String Tasklocation = restrictedTasklist.get(0).getDay();
+    	assertEquals(expected, Tasklocation);
+    }
 
+    /*
+    TEST 3.2
+    */
+    //Test task type
+    
+    @Test
+    public void TestgetRestrictedTaskList4() 
+    {
+    	String expected = "Lecture";
+    	HRAgent agentGreg = testAgentList.get(1);
+    	List<School> restrictedSchoolList = new ArrayList<>();
+    	restrictedSchoolList = Main.getRestrictedSchoolList(agentGreg, testSchoolList);
+    	
+    	List<Tasks> restrictedTasklist = new ArrayList<>();
+    	restrictedTasklist = Main.getRestictedTaskList(restrictedSchoolList, testTaskList);
+    	
+    	String Tasktype = restrictedTasklist.get(0).getTaskType();
+    	assertEquals(expected, Tasktype);
+    }    
+    
+    //TEST 4.1
+    //checkQualCasualStaff testing
+    @Test
+    public void TestCheckQualCasualStaff1() //staff 0 doesn't have matching tasks qual so expected to return false
+    {
+    	boolean expected = false;
+    	CasualStaff testStaff = testCasualStaff.get(0);
+    	boolean testResult = Main.checkQualCasualStaff(testTaskList, testStaff);
+    	assertEquals(expected, testResult);
+    }   
+    
+    //TEST 4.2
+    @Test
+    public void TestCheckQualCasualStaff2() //staff 1 doesn't have matching tasks qual so expected to return false
+    {
+    	boolean expected = false;
+    	CasualStaff testStaff = testCasualStaff.get(1);
+    	boolean testResult = Main.checkQualCasualStaff(testTaskList, testStaff);
+    	assertEquals(expected, testResult);
+    }   
+    
+    //TEST 4.3
+    @Test
+    public void TestCheckQualCasualStaff3() //staff 2 doesn't have matching tasks qual so expected to return false
+    {
+    	boolean expected = false;
+    	CasualStaff testStaff = testCasualStaff.get(2);
+    	boolean testResult = Main.checkQualCasualStaff(testTaskList, testStaff);
+    	assertEquals(expected, testResult);
+    }  
+    
+    //TEST 4.4
+    @Test
+    public void TestCheckQualCasualStaff4() //staff 3 doesn't have matching tasks qual so expected to return false
+    {
+    	boolean expected = true;
+    	CasualStaff testStaff = testCasualStaff.get(3);
+    	System.out.println(testStaff.getQualification() + testTaskList.get(3).getTaskQualifications());
+    	boolean testResult = Main.checkQualCasualStaff(testTaskList, testStaff);
+    	assertEquals(expected, testResult);
+    }   
 
 }
