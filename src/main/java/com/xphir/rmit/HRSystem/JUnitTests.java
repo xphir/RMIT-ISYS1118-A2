@@ -22,6 +22,7 @@ public class JUnitTests {
     HRAgent testAgent;
     CasualStaff testStaff;
     Tasks testTask;
+    HRAgent testAgentNoArea;
 
     //List Data
     List<School> testSchoolList = null;
@@ -82,6 +83,11 @@ public class JUnitTests {
     }
 
     @Before
+    public void setUpAgentNoArea(){
+        testAgentNoArea = new HRAgent(001, "Tyrion", "Lannister", "Administrator", "NOTHING", "Tyrion.Lannister@rmit.edu.au", "ForTheWatch");
+    }
+
+    @Before
     public void setUpStaff(){
         testStaff = new CasualStaff(001, "John", "Snow", "Mr", "John.Snow@rmit.edu.au", "COSC1076");
     }
@@ -95,7 +101,7 @@ public class JUnitTests {
     TEST 1 - verifyPassword()
      */
     @Test
-    //Testing the expected password (this should return true)
+    //[TEST 1.1] Testing the expected password (this should return true)
     public void TestPasswordExactMatch() {
         String testPassword = "ForTheWatch";
         boolean expected = true;
@@ -105,7 +111,7 @@ public class JUnitTests {
     }
 
     @Test
-    //Testing a lowercase password (this should return false)
+    //[TEST 1.2] Testing a lowercase password (this should return false)
     public void TestPasswordCaseCheck() {
         String testPassword = "forthewatch";
         boolean expected = false;
@@ -115,7 +121,7 @@ public class JUnitTests {
     }
 
     @Test
-    //Testing the expected password (this should return true)
+    //[TEST 1.3] Testing the expected password (this should return true)
     public void TestPasswordCompletelyWrong() {
         String testPassword = "ThisIsWrong";
         boolean expected = false;
@@ -124,7 +130,7 @@ public class JUnitTests {
     }
 
     @Test
-    //Testing a Null password (this should return false)
+    //[TEST 1.4] Testing a Null password (this should return false)
     public void TestPasswordNull() {
         String testPassword = "ThisIsWrong";
         boolean expected = false;
@@ -136,10 +142,10 @@ public class JUnitTests {
     //getRestrictedSchoolList testing
 
     /*
-    TEST 1 - getRestrictedSchoolList()
+    TEST 2 - getRestrictedSchoolList()
      */
     @Test
-    //checking test data is correct, if this is wrong it means the input data changed
+    //[TEST 2.0] checking test data is correct, if this is wrong it means the input data changed
     public void TestSchoolListLength() {
         int inputListCount = 0;
 
@@ -149,7 +155,7 @@ public class JUnitTests {
     }
 
     @Test
-    //checking resrticted data length is correct
+    //[TEST 2.1] checking resrticted data length is correct
     public void TestRestrictedSchoolListLength(){
         int restrictedListCount = 0;
         List<School> restrictedSchoolList = new ArrayList<>();
@@ -160,6 +166,7 @@ public class JUnitTests {
     }
 
     @Test
+    //[TEST 2.2] testing the created list is correct
     public void TestRestrictedSchoolContains1(){
         HRAgent selectedAgentGregor = testAgentList.get(1); //Selecting Gregor.Clegane@rmit.edu.au
 
@@ -173,6 +180,7 @@ public class JUnitTests {
     }
 
     @Test
+    //[TEST 2.3] testing the created list is correct
     public void TestRestrictedSchoolContains2(){
         HRAgent selectedAgentGregor = testAgentList.get(1); //Selecting Gregor.Clegane@rmit.edu.au
 
@@ -185,11 +193,27 @@ public class JUnitTests {
         assertEquals("Marketing", resultTitle);
     }
 
+    @Test
+    //[TEST 2.4] testing a staff with no valid access areas
+    public void TestRestrictedSchool(){
+        int expected = 0;
+        int listSize;
+        List<School> restrictedSchoolList = new ArrayList<>();
+
+        HRAgent selectedAgentNoArea = testAgentNoArea;
+
+        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentNoArea, testSchoolList);
+
+        listSize = restrictedSchoolList.size();
+
+        assertEquals(0, listSize);
+    }
+
 
 
 
     @Test
-    //Testing a simple getter function (NOTE THIS WONT COUNT AS FOR THE ASSIGNMENT)
+    //[TEST 0.1] Testing a simple getter function (NOTE THIS WONT COUNT AS FOR THE ASSIGNMENT)
     public void testGetTaskTitle() {
         String expected = "Take the Iron Throne";
         String response = testTask.getTaskTitle();
@@ -198,7 +222,7 @@ public class JUnitTests {
     }
 
     @Test
-    //Testing a simple getter function (NOTE THIS WONT COUNT AS FOR THE ASSIGNMENT)
+    //[TEST 0.2] Testing a simple getter function (NOTE THIS WONT COUNT AS FOR THE ASSIGNMENT)
     public void testSetCasualStaffLastName() {
         String expected = "Targaryen";
         testStaff.setLastName("Targaryen");
