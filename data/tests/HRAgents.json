@@ -1,0 +1,20 @@
+[
+  {
+    "ID": 1,
+    "firstName": "John",
+    "lastName": "Snow",
+    "agentType": "Administrator",
+    "accessArea": "SCI",
+    "email": "John.Snow@rmit.edu.au",
+    "passwordHash": "$2a$12$yz3d5H32g5Dv1JOw5rCzJOjTRcglKajVstzQIHJ3xUpZwb6Cu8C2O"
+  },
+  {
+    "ID": 2,
+    "firstName": "Gregor",
+    "lastName": "Clegane",
+    "agentType": "Administrator",
+    "accessArea": "BUS",
+    "email": "Gregor.Clegane@rmit.edu.au",
+    "passwordHash": "$2a$12$./feJ..YfaGc3XmnwW9LgOiu97zAw25hpTr4Ba049mc4L5M9eOr2y"
+  }
+]
