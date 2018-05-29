@@ -25,7 +25,7 @@ public class JUnitTests {
 
     //List Data
     List<School> testSchoolList = null;
-    List<School> testTaskList = null;
+    List<Tasks> testTaskList = null;
     List<HRAgent> testAgentList = null;
 
     @Before
@@ -91,6 +91,9 @@ public class JUnitTests {
         testTask = new Tasks(001, "Take the Iron Throne", "Werteros", "Monday", "War", "10/03/2018", "20/05/2018", "Notes Filler", 55.00, 1130, "COSC1076", "John Snow");
     }
 
+    /*
+    TEST 1 - verifyPassword()
+     */
     @Test
     //Testing the expected password (this should return true)
     public void TestPasswordExactMatch() {
@@ -130,16 +133,11 @@ public class JUnitTests {
     }
 
 
-
-
-
-
-    //getRestictedTaskList testing
-
-
-
     //getRestrictedSchoolList testing
 
+    /*
+    TEST 1 - getRestrictedSchoolList()
+     */
     @Test
     //checking test data is correct, if this is wrong it means the input data changed
     public void TestSchoolListLength() {
@@ -207,4 +205,35 @@ public class JUnitTests {
         String response = testStaff.getLastName();
         assertEquals(expected, response);
     }
+
+
+
+
+    /*
+    TEST 3
+     */
+
+    //getRestictedTaskList testing
+
+    @Test
+    public void TestgetRestictedTaskList(){
+        String expected = "Financial Management Lecture 01";
+        HRAgent selectedAgentGregor = testAgentList.get(1); //Selecting Gregor.Clegane@rmit.edu.au
+        List<School> restrictedSchoolList = new ArrayList<>(); //Creating a blank list
+        restrictedSchoolList = Main.getRestrictedSchoolList(selectedAgentGregor, testSchoolList); //Creating the restricted course list for Gregor
+
+        List<Tasks> restrictedTaskList = new ArrayList<>();
+        restrictedTaskList = Main.getRestictedTaskList(restrictedSchoolList, testTaskList);
+
+        String resultTask = restrictedTaskList.get(0).getTaskTitle();
+
+        assertEquals(expected, resultTask);
+    }
+
+
+    /*
+    TEST 4
+     */
+
+
 }
