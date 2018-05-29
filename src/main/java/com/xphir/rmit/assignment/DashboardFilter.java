@@ -1,12 +1,16 @@
 package com.xphir.rmit.assignment;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DashboardFilter {
 
 	private static final Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
+
+	public static void main(String[] args)
+	{
+		ArrayList<CasualStaff> casualStaff = new ArrayList<>();
 		// DO NOT CHANGE any code main method!
 
 		// Used for testing code
@@ -46,39 +50,39 @@ public class DashboardFilter {
 
 				// process user's selection
 				switch (selection) {
-				case 'A':
-					System.out.println("*** Option A Selected ***");
-					startup();
-					// methodSelect01();
-					break;
+					case 'A':
+						System.out.println("*** Option A Selected ***");
+						startup();
+						// methodSelect01();
+						break;
 
-				case 'B':
-					System.out.println("*** Option B Selected ***");
-					// methodSelect01();
-					break;
+					case 'B':
+						System.out.println("*** Option B Selected ***");
+						// methodSelect01();
+						break;
 
-				case 'C':
-					System.out.println("*** Option C Selected ***");
-					// methodSelect01();
-					break;
+					case 'C':
+						System.out.println("*** Option C Selected ***");
+						// methodSelect01();
+						break;
 
-				case 'D':
-					System.out.println("*** Option D Selected ***");
-					// methodSelect01();
-					break;
+					case 'D':
+						System.out.println("*** Option D Selected ***");
+						// methodSelect01();
+						break;
 
-				case 'E':
-					System.out.println("*** Option E Selected ***");
-					// methodSelect01();
-					break;
+					case 'E':
+						System.out.println("*** Option E Selected ***");
+						// methodSelect01();
+						break;
 
-				case 'X':
-					System.out.println("Exiting the program...");
-					// exit();
-					break;
+					case 'X':
+						System.out.println("Exiting the program...");
+						// exit();
+						break;
 
-				default:
-					System.out.println("Error - invalid selection!");
+					default:
+						System.out.println("Error - invalid selection!");
 				}
 			}
 			System.out.println();
@@ -184,8 +188,103 @@ public class DashboardFilter {
 	public void reportsMenu() {
 
 	}
+	public void casualStaffMenu(ArrayList<CasualStaff> casualstaff)
+	{
+		String input = null;
+		boolean exit = false;
+		int option = 0;
+		while(exit != true)
+		{
+			System.out.printf("\n---Casual Staff Menu---\n\n1.Create Casual Staff\n2.Edit Casual Staff\n3.Delete Casual Staff\n4.View Casual Staff\n0.BACK\n\nEnter the index of the option:\n");
+			input = sc.nextLine();
+			option = Integer.parseInt(input);
+			if(option == 0)
+			{
+				return;
+			}
+			else if(option == 1)
+			{
+				System.out.printf("\n\n\n\nPlease enter the credentials for the new staff: **use space to seperate each piece of info**\n"
+						+ "Format:[staff ID] [staff first name] [staff last name] [staff title] [staff email]\n");
+				input = sc.nextLine();
+				createCasualStaff(input);
+			}
+			else if(option == 2)
+			{
+				boolean found = false;
+				System.out.printf("\n\n\n\nEnter the ID of the casual staff to edit:\n");
+				input = sc.nextLine();
+				for(CasualStaff currentStaff: casualstaff)
+				{
+					if(currentStaff.csID == input)
+					{
+						currentStaff.editCasualStaff();
+						found = true;
+						break;
+					}
+				}
+				if(found == false)
+				{
+					System.out.println("casual staff unfound");
+				}
+			}
+			else if(option == 3)
+			{
+				boolean found = false;
+				System.out.printf("\n\n\n\nEnter the ID of the casual staff to delete:\n");
+				input = sc.nextLine();
+				for(CasualStaff currentStaff: casualstaff)
+				{
+					if(currentStaff.csID == input)
+					{
+						casualstaff.remove(currentStaff);
+						found = true;
+						break;
+					}
+				}
+				if(found == false)
+				{
+					System.out.println("casual staff unfound");
+				}
+			}
+			else if(option == 4)
+			{
+				System.out.println("Casual Staff:\n");
+				for(CasualStaff staff: casualstaff)
+				{
+					System.out.println(staff.toString());
+				}
+			}
+			else
+			{
+				System.out.println("\nInvalid input\n");
+			}
+		}
 
-	public void payrollMenu() {
-
+	}
+	public void createCasualStaff(String input)
+	{
+		String qual = null;
+		CasualStaff newStaff = new CasualStaff();
+		String[] token = input.split("\\ ");
+		if(token.length != 5)
+		{
+			System.out.println("Invalid input");
+			return;
+		}
+		else
+		{
+			newStaff.csID = token[0];
+			newStaff.firstName = token[1];
+			newStaff.lastName = token[2];
+			newStaff.title = token[3];
+			newStaff.email = token[4];
+		}
+		System.out.println("Now please enter their qualification: each qualification divided by a space\nFor example: qual1 qual2 qual3");
+		qual = sc.nextLine();
+		String[] qualToken = qual.split("\\ ");
+		ArrayList<String> qualification = new ArrayList<>(Arrays.asList(qualToken));
+		newStaff.setQualification(qualification);
+		qualification.clear();
 	}
 }
