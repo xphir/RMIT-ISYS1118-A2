@@ -72,7 +72,7 @@ public class JUnitTests {
 
 
 
-    
+
     @Test
     //Testing a simple getter function (NOTE THIS WONT COUNT AS FOR THE ASSIGNMENT)
     public void testGetTaskTitle() {

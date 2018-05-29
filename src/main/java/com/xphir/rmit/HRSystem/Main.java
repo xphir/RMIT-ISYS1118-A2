@@ -36,6 +36,7 @@ public class Main {
         List<School> schoolList = null;
         List<Tasks> taskList = null;
         List<HRAgent> agentList = null;
+        List<CasualStaff> casualStaffList = null;
 
         //ImportData
         System.out.println("*** Importing Courses ***");
@@ -44,6 +45,8 @@ public class Main {
         taskList = importTasks();
         System.out.println("*** Importing Agents ***");
         agentList = importHRAgents();
+        System.out.println("*** Importing Casual Staff ***");
+        casualStaffList = importCasualStaff();
 
         System.out.println();
         HRAgent CurrentAgent = LoginNew(agentList);
@@ -53,10 +56,14 @@ public class Main {
         //userChoice = menu();
 
         //ExportData
-        System.out.println("*** Exporting Tasks ***");
-        exportTasks(taskList);
         System.out.println("*** Exporting Courses ***");
         exportCourseNested(schoolList);
+        System.out.println("*** Exporting Tasks ***");
+        exportTasks(taskList);
+        System.out.println("*** Exporting Agents ***");
+        exportHRAgents(agentList);
+        System.out.println("*** Exporting Casual Staff ***");
+        exportCasualStaff(casualStaffList);
     }
 
     public static void showMenu(){
@@ -72,7 +79,7 @@ public class Main {
         //IMPORT
         Gson tasksImportGson = new Gson();
 
-        try (Reader reader = new FileReader("data/examples/Tasks.json")) {
+        try (Reader reader = new FileReader("data/live/Tasks.json")) {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<Tasks>>(){}.getType();
             tasksList = tasksImportGson.fromJson(reader, collectionType);
@@ -91,7 +98,7 @@ public class Main {
         String tasksJSON = CoursesExportGson.toJson(taskList);
 
         //2. Convert object to JSON string and save into a file directly
-        try (FileWriter writer = new FileWriter("data/examples/Tasks.json")) {
+        try (FileWriter writer = new FileWriter("data/live/Tasks.json")) {
 
             CoursesExportGson.toJson(taskList, writer);
 
@@ -106,7 +113,7 @@ public class Main {
         Gson CoursesImportGson = new Gson();
 
         List<School> courseList = null;
-        try (Reader reader = new FileReader("data/examples/CoursesNested.json")) {
+        try (Reader reader = new FileReader("data/live/CoursesNested.json")) {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<School>>(){}.getType();
             courseList = CoursesImportGson.fromJson(reader, collectionType);
@@ -127,7 +134,7 @@ public class Main {
         String schoolJSON = CoursesExportGson.toJson(schoolList);
 
         //2. Convert object to JSON string and save into a file directly
-        try (FileWriter writer = new FileWriter("data/examples/CoursesNested.json")) {
+        try (FileWriter writer = new FileWriter("data/live/CoursesNested.json")) {
 
             CoursesExportGson.toJson(schoolList, writer);
 
@@ -142,7 +149,7 @@ public class Main {
         Gson hrAgentImportGson = new Gson();
 
         List<HRAgent> agentList = null;
-        try (Reader reader = new FileReader("data/examples/HRAgents.json")) {
+        try (Reader reader = new FileReader("data/live/HRAgents.json")) {
             // Convert JSON to Java Object
             Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
             agentList = hrAgentImportGson.fromJson(reader, collectionType);
@@ -164,7 +171,7 @@ public class Main {
         String schoolJSON = agentExportGson.toJson(agentList);
 
         //2. Convert object to JSON string and save into a file directly
-        try (FileWriter writer = new FileWriter("data/examples/HRAgents.json")) {
+        try (FileWriter writer = new FileWriter("data/live/HRAgents.json")) {
 
             agentExportGson.toJson(agentList, writer);
 
@@ -173,6 +180,43 @@ public class Main {
         }
     }
 
+    public static List<CasualStaff> importCasualStaff() {
+        Gson casualStaffImportGson = new Gson();
+
+        List<CasualStaff> returnStaffList = null;
+        try (Reader reader = new FileReader("data/live/HRAgents.json")) {
+            // Convert JSON to Java Object
+            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
+            returnStaffList = casualStaffImportGson.fromJson(reader, collectionType);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return returnStaffList;
+    }
+
+    public static void exportCasualStaff(List<CasualStaff> casualStaffList){
+        List<CasualStaff> hcCasualStaffList = new ArrayList<CasualStaff>();
+        hcCasualStaffList.add(new CasualStaff(001, "John", "Snow", "Mr", "John.Snow@rmit.edu.au", "COSC1076"));
+        hcCasualStaffList.add(new CasualStaff(002, "Gregor", "Clegane", "Mr", "Gregor.Clegane@rmit.edu.au", "MKTG1276"));
+        hcCasualStaffList.add(new CasualStaff(003, "Tyrion", "Lannister", "Dr", "Tyrion.Lannister@rmit.edu.au", "ISYS1057"));
+        hcCasualStaffList.add(new CasualStaff(004, "Daenerys", "Targaryen", "Ms", "Daenerys.Targaryen@rmit.edu.au", "BUSM4141"));
+
+        //1. Convert object to JSON string
+        //Gson CoursesExportGson = new Gson();
+        Gson casualStaffGson = new GsonBuilder().setPrettyPrinting().create();
+
+        //2. Convert object to JSON string and save into a file directly
+        try (FileWriter writer = new FileWriter("data/live/CasualStaff.json")) {
+
+            casualStaffGson.toJson(hcCasualStaffList, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     //LOGIN METHOD
     public static HRAgent LoginNew(List<HRAgent> agentList){
         String emailInput;
@@ -252,7 +296,7 @@ public class Main {
 //        Gson HRAgentsImportGson = new Gson();
 //
 //        //READ JSON FILE
-//        try (Reader reader = new FileReader("data/examples/HRAgents.json")) {
+//        try (Reader reader = new FileReader("data/live/HRAgents.json")) {
 //            // Convert JSON to Java Object
 //            Type collectionType = new TypeToken<ArrayList<HRAgent>>(){}.getType();
 //            hrAgentsList = HRAgentsImportGson.fromJson(reader, collectionType);

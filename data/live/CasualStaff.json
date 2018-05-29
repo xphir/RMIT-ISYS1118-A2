@@ -1,0 +1,34 @@
+[
+  {
+    "ID": 1,
+    "firstName": "John",
+    "lastName": "Snow",
+    "title": "Mr",
+    "email": "John.Snow@rmit.edu.au",
+    "qualification": "COSC1076"
+  },
+  {
+    "ID": 2,
+    "firstName": "Gregor",
+    "lastName": "Clegane",
+    "title": "Mr",
+    "email": "Gregor.Clegane@rmit.edu.au",
+    "qualification": "MKTG1276"
+  },
+  {
+    "ID": 3,
+    "firstName": "Tyrion",
+    "lastName": "Lannister",
+    "title": "Dr",
+    "email": "Tyrion.Lannister@rmit.edu.au",
+    "qualification": "ISYS1057"
+  },
+  {
+    "ID": 4,
+    "firstName": "Daenerys",
+    "lastName": "Targaryen",
+    "title": "Ms",
+    "email": "Daenerys.Targaryen@rmit.edu.au",
+    "qualification": "BUSM4141"
+  }
+]
